@@ -1,0 +1,47 @@
+.portfolio-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.nav {
+    flex: 0 0 300px;
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.main {
+    flex: 1;
+    margin-left: 300px;
+    padding: 50px 40px;
+    overflow-y: visible;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .portfolio-container {
+        flex-direction: column;
+    }
+    
+    .nav {
+        flex: none;
+        position: static;
+        height: auto;
+        width: auto;
+        margin-left: 0;
+        padding: 30px 20px;
+    }
+    
+    .main {
+        margin-left: 0;
+        padding: 30px 20px;
+    }
+}

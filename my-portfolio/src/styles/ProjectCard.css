@@ -1,0 +1,121 @@
+/* Project Card Styles */
+.project-card {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    align-items: start;
+    padding: 24px;
+    margin: -24px;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.project-image-container {
+    width: 200px;
+    height: 120px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: rgba(100, 255, 218, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.project-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(100, 255, 218, 0.1);
+    border: 1px dashed rgba(100, 255, 218, 0.3);
+    border-radius: 4px;
+}
+
+.project-details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.project-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.project-description {
+    color: #a0a0a0;
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.project-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.tech-tag {
+    background-color: rgba(100, 255, 218, 0.1);
+    color: #64ffda;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid rgba(100, 255, 218, 0.2);
+}
+
+/* Hover Effects */
+.project-card:hover {
+    background-color: rgba(100, 255, 218, 0.03);
+    box-shadow: 0 8px 32px rgba(100, 255, 218, 0.1);
+}
+
+.project-card:hover .project-title {
+    color: #646cff;
+}
+
+.project-card:hover .project-image-placeholder {
+    border-color: rgba(100, 255, 218, 0.5);
+    background-color: rgba(100, 255, 218, 0.15);
+}
+
+.project-card:hover .tech-tag {
+    background-color: rgba(100, 255, 218, 0.15);
+    border-color: rgba(100, 255, 218, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .project-card {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 20px;
+        margin: -16px;
+        margin-bottom: 16px;
+    }
+    
+    .project-image-container {
+        width: 100%;
+        height: 160px;
+        order: -1;
+    }
+}
+
+@media (max-width: 480px) {
+    .tech-tag {
+        font-size: 0.75rem;
+        padding: 3px 10px;
+    }
+}

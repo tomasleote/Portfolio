@@ -1,0 +1,33 @@
+.about-section {
+    padding: 20px 0;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 0;
+    margin-left: 240px;
+    text-align: left;
+}
+
+.about-text {
+    color: #a0a0a0;
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.95rem;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 40px 20px;
+    }
+    
+    .about-content {
+        margin-left: 0;
+        padding: 0 24px;
+    }
+}
