@@ -7,14 +7,17 @@
     padding: 24px;
     transition: all 0.3s ease;
     border-radius: 8px;
-    cursor: pointer;
     margin-bottom: 20px;
+}
+
+.experience-item.clickable {
+    cursor: pointer;
 }
 
 .experience-timeframe {
     font-size: 0.875rem;
     font-weight: 600;
-    color: #646cff;
+    color: rgba(160, 160, 160, 0.7);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     text-align: left;
@@ -33,7 +36,7 @@
     color: #ffffff;
     margin: 0;
     line-height: 1.4;
-    margin-top: 0;
+    transition: color 0.3s ease;
 }
 
 .experience-description {
@@ -41,7 +44,6 @@
     line-height: 1.6;
     margin: 0;
     font-size: 0.95rem;
-    text-align: left;
 }
 
 .experience-technologies {
@@ -67,8 +69,8 @@
     box-shadow: 0 8px 32px rgba(100, 255, 218, 0.1);
 }
 
-.experience-item:hover .experience-title {
-    color: #646cff;
+.experience-item.clickable:hover .experience-title {
+    color: #64ffda;
 }
 
 .experience-item:hover .tech-tag {

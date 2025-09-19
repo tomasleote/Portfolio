@@ -20,7 +20,7 @@
 .nav-header h3 {
     font-size: 1.1rem;
     margin: 0 0 0 0;
-    color: #646cff;
+    color: #64ffda;
     font-weight: 400;
     line-height: 1.5;
 }
@@ -36,7 +36,7 @@
     background: none;
     border: none;
     outline: none;
-    color: #a0a0a0;
+    color: rgba(160, 160, 160, 0.7);
     font-size: 0.875rem;
     font-weight: 500;
     padding: 12px 0;
@@ -46,6 +46,7 @@
     letter-spacing: 0.1em;
     position: relative;
     font-family: inherit;
+    transform: scale(1);
 }
 
 .sidebar-nav button::before {
@@ -61,7 +62,8 @@
 }
 
 .sidebar-nav .active {
-    color: #646cff;
+    color: #ffffff;
+    transform: scale(1.05);
 }
 
 .sidebar-nav .active::before {
@@ -69,7 +71,8 @@
 }
 
 .sidebar-nav .inactive:hover {
-    color: #646cff;
+    color: #ffffff;
+    transform: scale(1.05);
 }
 
 .sidebar-nav .inactive:hover::before {
