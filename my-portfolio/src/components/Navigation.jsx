@@ -1,4 +1,5 @@
 import '../styles/Navigation.css'
+import SocialMediaIcon from './SocialMediaIcon'
 
 function Navigation({ activeSection, onSectionClick }) {
 
@@ -28,6 +29,29 @@ function Navigation({ activeSection, onSectionClick }) {
                 > 
                     Projects 
                 </button>
+            </div>
+            
+            <div className="social-links">
+                <SocialMediaIcon 
+                    icon="fa-linkedin-in" 
+                    url="https://www.linkedin.com/in/tom%C3%A1s-leote-falc%C3%A3o-a81860266/" 
+                    label="LinkedIn" 
+                />
+                <SocialMediaIcon 
+                    icon="fa-github" 
+                    url="https://github.com/tomasleote" 
+                    label="GitHub" 
+                />
+                <SocialMediaIcon 
+                    icon="fa-envelope" 
+                    url="mailto:tomas.leote@gmail.com" 
+                    label="Email" 
+                />
+                <SocialMediaIcon 
+                    icon="fa-spotify" 
+                    url="https://open.spotify.com/user/11123207778?si=95bcfbeef7aa4209" 
+                    label="Spotify" 
+                />
             </div>
         </nav>
     )

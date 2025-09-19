@@ -1,0 +1,32 @@
+.social-icon {
+    background: none;
+    border: none;
+    outline: none;
+    color: rgba(160, 160, 160, 0.7);
+    font-size: 1.5rem;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    transform: scale(1);
+    border-radius: 4px;
+}
+
+.social-icon:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+.social-icon:focus-visible {
+    outline: 2px solid #646cff;
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .social-icon {
+        font-size: 1.3rem;
+        padding: 8px;
+    }
+}
