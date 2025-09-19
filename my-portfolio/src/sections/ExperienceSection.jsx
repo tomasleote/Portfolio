@@ -1,5 +1,6 @@
 import '../styles/ExperienceSection.css'
 import ExperienceCard from '../components/ExperienceCard'
+import cvFile from '../assets/CV_TomasLeote_Groningen_2025.pdf'
 
 function ExperienceSection({ isActive }) {
     const experiences = [
@@ -45,7 +46,7 @@ function ExperienceSection({ isActive }) {
             
             <div className="section-link">
                 <a 
-                    href="https://drive.google.com/file/d/your-cv-file-id/view" 
+                    href={cvFile}
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="view-all-link"

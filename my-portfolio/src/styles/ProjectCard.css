@@ -20,6 +20,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: zoom-in;
+    transition: all 0.3s ease;
 }
 
 .project-image {
@@ -27,6 +29,7 @@
     height: 100%;
     object-fit: cover;
     border-radius: 4px;
+    transition: transform 0.3s ease;
 }
 
 .project-image-placeholder {
@@ -88,6 +91,14 @@
 .project-card:hover .project-image-placeholder {
     border-color: rgba(100, 255, 218, 0.5);
     background-color: rgba(100, 255, 218, 0.15);
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.05);
+}
+
+.project-image-container:hover {
+    box-shadow: 0 4px 16px rgba(100, 255, 218, 0.2);
 }
 
 .project-card:hover .tech-tag {
