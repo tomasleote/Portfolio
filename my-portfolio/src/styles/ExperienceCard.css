@@ -2,9 +2,9 @@
 .experience-item {
     display: grid;
     grid-template-columns: 200px 1fr;
-    gap: 24px;
+    gap: 40px;
     align-items: start;
-    padding: 0 24px;
+    padding: 24px;
     transition: all 0.3s ease;
     border-radius: 8px;
     cursor: pointer;
@@ -17,7 +17,7 @@
     color: #646cff;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    text-align: right;
+    text-align: left;
     padding-top: 4px;
 }
 

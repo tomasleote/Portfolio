@@ -1,7 +1,7 @@
 import '../styles/ProjectsSection.css'
 import ProjectCard from '../components/ProjectCard'
 
-function ProjectsSection({ isActive, sectionRef }) {
+function ProjectsSection({ isActive }) {
     const projects = [
         {
             title: "Budget Tracker",
@@ -15,7 +15,7 @@ function ProjectsSection({ isActive, sectionRef }) {
             description: "A Java-based synthetic data generator that can generate thousands of unique values per second with different format requirements. Features a modular pipeline architecture with composable generators, mathematical formula support, and a user-friendly C# interface for defining data generation requirements.",
             technologies: ["Java", "C#", "Swing", "Maven", "Mathematical Expressions"],
             githubUrl: "https://github.com/tomasleote/multiFormatDataGenerator",
-            imageUrl: "C:\Users\tomas\Desktop\Projetos\Programming\Portfolio\my-portfolio\src\assets\dataGenPic.png"
+            imageUrl: null
         },
         {
             title: "Stock Market Simulator",
@@ -34,31 +34,29 @@ function ProjectsSection({ isActive, sectionRef }) {
     ]
 
     return (
-        <section ref={sectionRef} className="projects-section">
-            <div className="projects-content">
-                {projects.map((project, index) => (
-                    <ProjectCard
-                        key={index}
-                        title={project.title}
-                        description={project.description}
-                        technologies={project.technologies}
-                        githubUrl={project.githubUrl}
-                        imageUrl={project.imageUrl}
-                    />
-                ))}
-                
-                <div className="section-link">
-                    <a 
-                        href="https://github.com/tomasleote" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="view-all-link"
-                    >
-                        View All Projects →
-                    </a>
-                </div>
+        <div className="projects-content">
+            {projects.map((project, index) => (
+                <ProjectCard
+                    key={index}
+                    title={project.title}
+                    description={project.description}
+                    technologies={project.technologies}
+                    githubUrl={project.githubUrl}
+                    imageUrl={project.imageUrl}
+                />
+            ))}
+            
+            <div className="section-link">
+                <a 
+                    href="https://github.com/tomasleote" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="view-all-link"
+                >
+                    View All Projects →
+                </a>
             </div>
-        </section>
+        </div>
     )
 }
 

@@ -1,7 +1,7 @@
 import '../styles/ExperienceSection.css'
 import ExperienceCard from '../components/ExperienceCard'
 
-function ExperienceSection({ isActive, sectionRef }) {
+function ExperienceSection({ isActive }) {
     const experiences = [
         {
             timeframe: "Sep — Dec 2024",
@@ -27,31 +27,29 @@ function ExperienceSection({ isActive, sectionRef }) {
     ]
 
     return (
-        <section ref={sectionRef} className="experience-section">
-            <div className="experience-content">
-                {experiences.map((exp, index) => (
-                    <ExperienceCard
-                        key={index}
-                        timeframe={exp.timeframe}
-                        role={exp.role}
-                        company={exp.company}
-                        description={exp.description}
-                        technologies={exp.technologies}
-                    />
-                ))}
-                
-                <div className="section-link">
-                    <a 
-                        href="https://drive.google.com/file/d/your-cv-file-id/view" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="view-all-link"
-                    >
-                        View Full Résumé →
-                    </a>
-                </div>
+        <div className="experience-content">
+            {experiences.map((exp, index) => (
+                <ExperienceCard
+                    key={index}
+                    timeframe={exp.timeframe}
+                    role={exp.role}
+                    company={exp.company}
+                    description={exp.description}
+                    technologies={exp.technologies}
+                />
+            ))}
+            
+            <div className="section-link">
+                <a 
+                    href="https://drive.google.com/file/d/your-cv-file-id/view" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="view-all-link"
+                >
+                    View Full Résumé →
+                </a>
             </div>
-        </section>
+        </div>
     )
 }
 

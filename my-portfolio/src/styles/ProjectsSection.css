@@ -1,16 +1,8 @@
 /* Projects Section Container Styles */
-.projects-section {
-    padding: 20px 0;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
 .projects-content {
     display: flex;
     flex-direction: column;
     gap: 40px;
-    padding: 0;
-    margin-left: 240px;
     text-align: left;
 }
 
@@ -32,17 +24,4 @@
 
 .view-all-link:hover {
     color: #ffffff;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .projects-section {
-        padding: 40px 20px;
-    }
-    
-    .projects-content {
-        margin-left: 0;
-        padding: 0 24px;
-        gap: 24px;
-    }
 }

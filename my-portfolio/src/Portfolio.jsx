@@ -30,28 +30,39 @@ function Portfolio() {
   }, [activeSection])
   
   return (
-    <div className='portfolio-container'>
-        <div className='nav'>
+    <div className='portfolio-wrapper'>
+        <div className='navigation-column'>
             <Navigation 
                 activeSection={activeSection} 
                 onSectionClick={handleSectionClick}
             />
         </div>
         
-        <section className='main'>
-            <AboutSection 
-                sectionRef={aboutRef}
-                isActive={activeSection === 'about'} 
-            />
-            <ExperienceSection 
-                sectionRef={experienceRef} 
-                isActive={activeSection === 'experience'} 
-            />
-            <ProjectsSection 
-                sectionRef={projectsRef}
-                isActive={activeSection === 'projects'} 
-            />
-        </section>
+        <div className='content-column'>
+            <div className='section-wrapper' ref={aboutRef}>
+                <div className='content-container'>
+                    <AboutSection 
+                        isActive={activeSection === 'about'} 
+                    />
+                </div>
+            </div>
+            
+            <div className='section-wrapper' ref={experienceRef}>
+                <div className='content-container'>
+                    <ExperienceSection 
+                        isActive={activeSection === 'experience'} 
+                    />
+                </div>
+            </div>
+            
+            <div className='section-wrapper' ref={projectsRef}>
+                <div className='content-container'>
+                    <ProjectsSection 
+                        isActive={activeSection === 'projects'} 
+                    />
+                </div>
+            </div>
+        </div>
     </div>
   )
 }

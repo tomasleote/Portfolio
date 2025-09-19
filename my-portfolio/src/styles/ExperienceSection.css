@@ -1,11 +1,4 @@
 /* Experience Section Container Styles */
-.experience-section {
-    padding: 200px 0;
-    max-width: 1000px;
-    margin: 0 auto;
-    
-}
-
 .experience-content {
     display: flex;
     flex-direction: column;
@@ -14,7 +7,6 @@
 
 .section-link {
     margin-top: 20px;
-    margin-left: 240px;
 }
 
 .view-all-link {
@@ -31,21 +23,4 @@
 
 .view-all-link:hover {
     color: #ffffff;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .experience-content {
-        gap: 40px;
-    }
-    
-    .section-link {
-        margin-left: 0;
-    }
-}
-
-@media (max-width: 480px) {
-    .experience-section {
-        padding: 40px 20px;
-    }
 }
