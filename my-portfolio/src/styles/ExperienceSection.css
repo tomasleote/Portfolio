@@ -5,6 +5,11 @@
     gap: 40px;
 }
 
+.magnet-wrapper {
+    width: 100%;
+    display: block;
+}
+
 .section-link {
     margin-top: 20px;
 }
