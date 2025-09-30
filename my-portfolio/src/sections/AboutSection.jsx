@@ -13,7 +13,7 @@ function AboutSection({ isActive }) {
             </p>
             
             <p className='about-text'> 
-                Currently, I'm working as a full-stack developer at Avodah Creatives, where I contribute to the creation and maintenance of UI components that power their frontend platform. I focus on ensuring our applications meet web accessibility standards and best practices to deliver an inclusive user experience that everyone can enjoy.
+                Currently, I'm working as a freelancer for Avodah Creatives, where I'm helping to build their product and website from scratch. I focus on developing UI components and ensuring our applications meet web accessibility standards and best practices to deliver an inclusive user experience that everyone can enjoy.    
             </p>
             
             <p className='about-text'> 
