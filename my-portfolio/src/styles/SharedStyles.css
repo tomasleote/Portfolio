@@ -1,0 +1,27 @@
+/* Shared Section Title Styles */
+.section-title {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.section-title-text {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .section-title {
+        margin-bottom: 2rem;
+    }
+    
+    .section-title-text {
+        font-size: clamp(2rem, 4vw, 3rem);
+    }
+}

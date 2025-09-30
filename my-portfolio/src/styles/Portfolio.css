@@ -1,71 +1,65 @@
-* {
-    box-sizing: border-box;
-    /*box*/
-}
-
-.portfolio-wrapper {
-    display: grid;
-    grid-template-columns: 450px 1fr;
-    height: 100vh;
+/* Main portfolio container */
+.portfolio-container {
+    min-height: 100vh;
     width: 100%;
-    background-color: #0f172a;
+    background: #0f0f23;
     position: relative;
-    transition: background 0.15s ease;
-    overflow: hidden; /* Ensure gradient doesn't cause scrollbars */
 }
 
-.navigation-column {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    z-index: 1000;
+/* Main content area */
+.main-content {
+    width: 100%;
+    padding-top: 60px; /* Account for fixed navigation */
+    position: relative;
 }
 
-.content-column {
+/* Section styling */
+.section {
+    min-height: 100vh;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    height: 100vh;
-    overflow-y: auto;
-    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    position: relative;
 }
 
-.content-container {
-    margin: 0;
+/* Adjust for different sections */
+#title {
+    padding: 0;
+}
+
+#about {
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f0f23 100%);
+}
+
+#experience {
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+}
+
+#projects {
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f0f23 100%);
+}
+
+/* Section content container */
+.section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
     padding: 0 40px;
-    width: 100%;
 }
 
-.section-wrapper {
-    width: 100%;
-    padding: 60px 0;
-}
-
-.section-wrapper:first-child {
-    padding-top: 80px;
-}
-
-/* Responsive Design */
+/* Responsive design */
 @media (max-width: 768px) {
-    .portfolio-wrapper {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr;
+    .main-content {
+        padding-top: 50px;
     }
     
-    .navigation-column {
-        position: static;
-        height: auto;
-        order: -1;
+    .section {
+        padding: 60px 15px;
     }
     
-    .content-container {
+    .section-content {
         padding: 0 20px;
-    }
-    
-    .section-wrapper {
-        padding: 40px 0;
-    }
-    
-    .section-wrapper:first-child {
-        padding-top: 40px;
     }
 }

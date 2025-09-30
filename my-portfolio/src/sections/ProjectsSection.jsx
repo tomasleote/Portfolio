@@ -1,3 +1,4 @@
+import ScrollReveal from '../components/ScrollReveal'
 import '../styles/ProjectsSection.css'
 import ProjectCard from '../components/ProjectCard'
 import dataGenPic from '../assets/dataGenPic.png'
@@ -52,7 +53,18 @@ function ProjectsSection({ isActive }) {
     ]
 
     return (
-        <div className="projects-content">
+        <div className="projects-section-wrapper">
+            <ScrollReveal
+                baseOpacity={0}
+                enableBlur={true}
+                baseRotation={3}
+                blurStrength={8}
+                containerClassName="section-title"
+                textClassName="section-title-text"
+            >
+                Projects
+            </ScrollReveal>
+            <div className="projects-content">
             {projects.map((project, index) => (
                 <ProjectCard
                     key={index}
@@ -73,6 +85,7 @@ function ProjectsSection({ isActive }) {
                 >
                     View All Projects →
                 </a>
+            </div>
             </div>
         </div>
     )

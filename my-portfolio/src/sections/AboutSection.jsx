@@ -1,3 +1,4 @@
+import ScrollReveal from '../components/ScrollReveal'
 import '../styles/AboutSection.css'
 
 function AboutSection({ isActive }) {
@@ -7,7 +8,18 @@ function AboutSection({ isActive }) {
     ];
 
     return (
-        <div className='about-content'>
+        <div className='about-section-wrapper'>
+            <ScrollReveal
+                baseOpacity={0}
+                enableBlur={true}
+                baseRotation={3}
+                blurStrength={8}
+                containerClassName="section-title"
+                textClassName="section-title-text"
+            >
+                Who am I?
+            </ScrollReveal>
+            <div className='about-content'>
             <p className='about-text'> 
                 Hey there! I'm a recent Computing Science graduate from the University of Groningen who genuinely enjoys building web applications and creating digital experiences. Beyond coding, I have a big passion for travelling, discovering new music, and outdoor sports.
             </p>
@@ -37,6 +49,7 @@ function AboutSection({ isActive }) {
                         </span>
                     ))}
                 </div>
+            </div>
             </div>
         </div>
     )

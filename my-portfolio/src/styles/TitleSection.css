@@ -1,0 +1,36 @@
+.title-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+}
+
+.title-content {
+    text-align: center;
+    z-index: 1;
+}
+
+.main-title {
+    margin-bottom: 1rem;
+}
+
+.main-title .title-text {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+.subtitle .subtitle-text {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 300;
+    color: #94a3b8;
+    letter-spacing: 0.05em;
+    margin: 0;
+}

@@ -1,3 +1,4 @@
+import ScrollReveal from '../components/ScrollReveal'
 import '../styles/ExperienceSection.css'
 import ExperienceCard from '../components/ExperienceCard'
 import Magnet from '../components/effects/Magnet'
@@ -32,7 +33,18 @@ function ExperienceSection({ isActive }) {
     ]
 
     return (
-        <div className="experience-content">
+        <div className="experience-section-wrapper">
+            <ScrollReveal
+                baseOpacity={0}
+                enableBlur={true}
+                baseRotation={3}
+                blurStrength={8}
+                containerClassName="section-title"
+                textClassName="section-title-text"
+            >
+                Experience
+            </ScrollReveal>
+            <div className="experience-content">
             {experiences.map((exp, index) => (
                 <Magnet 
                     key={index}
@@ -60,6 +72,7 @@ function ExperienceSection({ isActive }) {
                 >
                     View Full Résumé →
                 </a>
+            </div>
             </div>
         </div>
     )
