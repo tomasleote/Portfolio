@@ -1,0 +1,229 @@
+/* Hamburger Button */
+.hamburger {
+    display: none;
+    position: relative;
+    width: 28px;
+    height: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 2001;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    transition: opacity 0.3s ease;
+}
+
+.hamburger:active {
+    opacity: 0.7;
+}
+
+.hamburger span {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #64ffda;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border-radius: 2px;
+    left: 0;
+}
+
+.hamburger span:nth-child(1) {
+    top: 0;
+}
+
+.hamburger span:nth-child(2) {
+    top: 11px;
+}
+
+.hamburger span:nth-child(3) {
+    bottom: 0;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh; /* Use dynamic viewport height for better mobile support */
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(15, 23, 42, 0.95) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+.mobile-menu-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    padding: 80px 20px 40px;
+}
+
+.mobile-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.mobile-nav-item {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    transform: translateY(0);
+    opacity: 0;
+    animation: slideUp 0.5s ease forwards;
+}
+
+.mobile-nav-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.mobile-nav-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.mobile-nav-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+.mobile-nav-item:active {
+    transform: scale(0.95);
+}
+
+.mobile-nav-item.active {
+    color: #64ffda;
+}
+
+.mobile-nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 60%;
+    height: 2px;
+    background-color: #64ffda;
+    transition: transform 0.3s ease;
+}
+
+.mobile-nav-item.active::after,
+.mobile-nav-item:hover::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+/* Show on mobile only */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+    
+    .mobile-menu-overlay {
+        display: block;
+    }
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 480px) {
+    .hamburger {
+        width: 24px;
+        height: 20px;
+    }
+    
+    .hamburger span:nth-child(2) {
+        top: 9px;
+    }
+    
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(7px, 7px);
+    }
+    
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+    
+    .mobile-nav {
+        gap: 20px;
+    }
+    
+    .mobile-nav-item {
+        font-size: 1.5rem;
+        padding: 10px 20px;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+    .mobile-nav-item {
+        font-size: 1.3rem;
+        padding: 8px 16px;
+    }
+    
+    .hamburger {
+        width: 22px;
+        height: 18px;
+    }
+    
+    .hamburger span:nth-child(2) {
+        top: 8px;
+    }
+}
+
+/* Landscape mode */
+@media (max-height: 600px) and (orientation: landscape) {
+    .mobile-nav {
+        gap: 16px;
+    }
+    
+    .mobile-nav-item {
+        font-size: 1.2rem;
+        padding: 8px 16px;
+    }
+}

@@ -26,6 +26,25 @@
     height: 100vh;
     overflow-y: auto;
     width: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(100, 255, 218, 0.2) transparent;
+}
+
+.content-column::-webkit-scrollbar {
+    width: 8px;
+}
+
+.content-column::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.content-column::-webkit-scrollbar-thumb {
+    background-color: rgba(100, 255, 218, 0.2);
+    border-radius: 4px;
+}
+
+.content-column::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(100, 255, 218, 0.3);
 }
 
 .content-container {
@@ -43,28 +62,135 @@
     padding-top: 80px;
 }
 
-/* Responsive Design */
+/* Hide mobile hero on desktop */
+#hero {
+    display: none;
+}
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+    .portfolio-wrapper {
+        grid-template-columns: 380px 1fr;
+    }
+    
+    .content-container {
+        padding: 0 30px;
+    }
+}
+
+/* Mobile Styles */
 @media (max-width: 768px) {
     .portfolio-wrapper {
         grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr;
+        grid-template-rows: 1fr;
+        height: 100vh;
+        overflow: hidden;
     }
     
     .navigation-column {
-        position: static;
-        height: auto;
-        order: -1;
+        display: none; /* Hide desktop navigation on mobile */
+    }
+    
+    /* Show mobile hero on mobile */
+    #hero {
+        display: block;
+        padding: 0;
+        margin: 0;
+    }
+    
+    #hero .content-container {
+        padding: 0;
+    }
+    
+    .content-column {
+        padding-top: 0; /* Remove top padding since header is fixed */
+        height: 100vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        overscroll-behavior-y: contain; /* Prevent pull-to-refresh */
     }
     
     .content-container {
         padding: 0 20px;
+        max-width: 100%;
     }
     
     .section-wrapper {
         padding: 40px 0;
+        min-height: auto;
     }
     
     .section-wrapper:first-child {
+        padding-top: 0; /* Hero section has no top padding */
+    }
+    
+    .section-wrapper:last-child {
+        padding-bottom: 60px;
+    }
+    
+    /* Ensure About section has proper spacing after hero */
+    #about {
+        padding-top: 60px;
+    }
+}
+
+/* Smaller mobile screens */
+@media (max-width: 480px) {
+    .content-container {
+        padding: 0 16px;
+    }
+    
+    .section-wrapper {
+        padding: 35px 0;
+    }
+    
+    #about {
+        padding-top: 50px;
+    }
+    
+    .section-wrapper:last-child {
+        padding-bottom: 50px;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+    .content-container {
+        padding: 0 12px;
+    }
+    
+    .section-wrapper {
+        padding: 30px 0;
+    }
+    
+    #about {
+        padding-top: 45px;
+    }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+    .section-wrapper {
+        padding: 20px 0;
+    }
+    
+    #about {
         padding-top: 40px;
+    }
+    
+    .section-wrapper:last-child {
+        padding-bottom: 40px;
+    }
+}
+
+/* Large desktop screens */
+@media (min-width: 1440px) {
+    .portfolio-wrapper {
+        grid-template-columns: 500px 1fr;
+    }
+    
+    .content-container {
+        padding: 0 60px;
+        max-width: 1200px;
     }
 }

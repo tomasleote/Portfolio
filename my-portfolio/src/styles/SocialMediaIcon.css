@@ -10,6 +10,10 @@
     font-family: inherit;
     transform: scale(1);
     border-radius: 4px;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .social-icon:hover {
@@ -23,10 +27,49 @@
     border-radius: 4px;
 }
 
-/* Responsive Design */
+/* Tablet */
+@media (max-width: 1024px) {
+    .social-icon {
+        font-size: 1.4rem;
+        padding: 9px;
+    }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
     .social-icon {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         padding: 8px;
+        min-width: 40px;
+        min-height: 40px;
+    }
+    
+    .social-icon:hover {
+        transform: none;
+    }
+    
+    .social-icon:active {
+        opacity: 0.7;
+        transform: scale(0.95);
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .social-icon {
+        font-size: 1.1rem;
+        padding: 6px;
+        min-width: 36px;
+        min-height: 36px;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+    .social-icon {
+        font-size: 1rem;
+        padding: 5px;
+        min-width: 32px;
+        min-height: 32px;
     }
 }

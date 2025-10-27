@@ -2,8 +2,22 @@ import '../styles/ExperienceSection.css'
 import ExperienceCard from '../components/ExperienceCard'
 import Magnet from '../components/effects/Magnet'
 import cvFile from '../assets/CV_TomasLeote_Groningen_2025.pdf'
+import { useState, useEffect } from 'react'
 
 function ExperienceSection({ isActive }) {
+    const [isMobile, setIsMobile] = useState(false)
+    
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768)
+        }
+        
+        checkMobile()
+        window.addEventListener('resize', checkMobile)
+        
+        return () => window.removeEventListener('resize', checkMobile)
+    }, [])
+    
     const experiences = [
         {
             timeframe: "Sep — Dec 2024",
@@ -34,13 +48,9 @@ function ExperienceSection({ isActive }) {
     return (
         <div className="experience-content">
             {experiences.map((exp, index) => (
-                <Magnet 
-                    key={index}
-                    padding={50}
-                    magnetStrength={10}
-                    wrapperClassName="magnet-wrapper"
-                >
+                isMobile ? (
                     <ExperienceCard
+                        key={index}
                         timeframe={exp.timeframe}
                         role={exp.role}
                         company={exp.company}
@@ -48,7 +58,23 @@ function ExperienceSection({ isActive }) {
                         description={exp.description}
                         technologies={exp.technologies}
                     />
-                </Magnet>
+                ) : (
+                    <Magnet 
+                        key={index}
+                        padding={50}
+                        magnetStrength={10}
+                        wrapperClassName="magnet-wrapper"
+                    >
+                        <ExperienceCard
+                            timeframe={exp.timeframe}
+                            role={exp.role}
+                            company={exp.company}
+                            companyUrl={exp.companyUrl}
+                            description={exp.description}
+                            technologies={exp.technologies}
+                        />
+                    </Magnet>
+                )
             ))}
             
             <div className="section-link">

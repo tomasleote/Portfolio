@@ -86,32 +86,10 @@
     border-radius: 4px;
 }
 
-/* Responsive Design */
+/* Responsive Design - Hide desktop navigation on mobile */
 @media (max-width: 768px) {
     .sidebar-nav {
-        padding-left: 20px;
-        padding-top: 40px;
-        gap: 32px;
-    }
-    
-    .nav-header h1 {
-        font-size: 2rem;
-    }
-    
-    .nav-header h3 {
-        font-size: 1rem;
-    }
-    
-    .sidebar-nav button::before {
-        left: -30px;
-    }
-    
-    .sidebar-nav .active::before {
-        width: 20px;
-    }
-    
-    .sidebar-nav .inactive:hover::before {
-        width: 15px;
+        display: none; /* This navigation is replaced by mobile header */
     }
 }
 

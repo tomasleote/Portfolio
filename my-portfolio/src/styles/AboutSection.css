@@ -35,7 +35,6 @@
     gap: 8px;
 }
 
-/* Import tech-tag styles from ExperienceCard */
 .tech-tag {
     background-color: rgba(100, 255, 218, 0.1);
     color: #64ffda;
@@ -45,6 +44,7 @@
     font-weight: 500;
     border: 1px solid rgba(100, 255, 218, 0.2);
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .tech-tag:hover {
@@ -52,8 +52,29 @@
     border-color: rgba(100, 255, 218, 0.3);
 }
 
-/* Responsive Design */
+/* Tablet */
+@media (max-width: 1024px) {
+    .about-content {
+        gap: 20px;
+    }
+    
+    .about-text {
+        font-size: 0.925rem;
+    }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
+    .about-content {
+        gap: 18px;
+    }
+    
+    .about-text {
+        font-size: 0.875rem;
+        line-height: 1.55;
+        color: rgba(160, 160, 160, 0.9);
+    }
+    
     .tech-stack-section {
         margin-top: 24px;
         padding-top: 20px;
@@ -61,12 +82,63 @@
     
     .tech-stack-title {
         font-size: 0.9rem;
+        margin-bottom: 12px;
+    }
+    
+    .tech-stack-container {
+        gap: 6px;
+    }
+    
+    .tech-tag {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+    }
+    
+    /* Disable hover on mobile */
+    .tech-tag:hover {
+        background-color: rgba(100, 255, 218, 0.1);
+        border-color: rgba(100, 255, 218, 0.2);
     }
 }
 
+/* Small mobile */
 @media (max-width: 480px) {
+    .about-content {
+        gap: 16px;
+    }
+    
+    .about-text {
+        font-size: 0.825rem;
+        line-height: 1.5;
+        /* Improve readability on small screens */
+        text-align: justify;
+        hyphens: auto;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+    }
+    
+    .tech-stack-section {
+        margin-top: 20px;
+        padding-top: 16px;
+    }
+    
+    .tech-stack-title {
+        font-size: 0.85rem;
+    }
+    
     .tech-tag {
-        font-size: 0.75rem;
-        padding: 3px 10px;
+        font-size: 0.65rem;
+        padding: 2px 6px;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+    .about-text {
+        font-size: 0.8rem;
+    }
+    
+    .tech-stack-title {
+        font-size: 0.8rem;
     }
 }
