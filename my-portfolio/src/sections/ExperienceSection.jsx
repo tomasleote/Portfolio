@@ -47,6 +47,7 @@ function ExperienceSection({ isActive }) {
 
     return (
         <div className="experience-content">
+            <h2 className="section-title">Experience</h2>
             {experiences.map((exp, index) => (
                 isMobile ? (
                     <ExperienceCard

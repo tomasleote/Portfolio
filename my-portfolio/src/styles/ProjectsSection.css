@@ -6,6 +6,28 @@
     text-align: left;
 }
 
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 24px 0;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 12px;
+    display: none; /* Hidden on desktop */
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, #64ffda 0%, transparent 100%);
+}
+
 .section-link {
     margin-top: 20px;
 }
@@ -46,6 +68,17 @@
         gap: 20px;
     }
     
+    .section-title {
+        display: block; /* Show on mobile */
+        font-size: 1.25rem;
+        margin: 0 0 20px 0;
+        padding-bottom: 10px;
+    }
+    
+    .section-title::after {
+        width: 50px;
+    }
+    
     .section-link {
         margin-top: 16px;
     }
@@ -68,6 +101,16 @@
 @media (max-width: 480px) {
     .projects-content {
         gap: 16px;
+    }
+    
+    .section-title {
+        font-size: 1.1rem;
+        margin: 0 0 16px 0;
+        padding-bottom: 8px;
+    }
+    
+    .section-title::after {
+        width: 40px;
     }
     
     .view-all-link {

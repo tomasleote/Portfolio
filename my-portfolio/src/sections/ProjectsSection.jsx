@@ -53,6 +53,7 @@ function ProjectsSection({ isActive }) {
 
     return (
         <div className="projects-content">
+            <h2 className="section-title">Projects</h2>
             {projects.map((project, index) => (
                 <ProjectCard
                     key={index}
