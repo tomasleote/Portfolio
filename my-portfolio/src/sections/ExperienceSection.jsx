@@ -20,6 +20,14 @@ function ExperienceSection({ isActive }) {
     
     const experiences = [
         {
+            timeframe: "Sep 2024 — Present",
+            role: "Freelance Frontend Developer",
+            company: "Avodah Creatives",
+            companyUrl: "https://avodahcreatives.com/",
+            description: "Developing and maintaining frontend solutions for a creative agency as a freelance developer. Building responsive websites and client dashboards using modern web technologies, focusing on creating intuitive user interfaces and seamless user experiences. Collaborating with the team to deliver high-quality digital products that meet client requirements and business objectives.",
+            technologies: ["React", "Tailwind CSS", "JavaScript", "Responsive Design", "Frontend Development"]
+        },
+        {
             timeframe: "Sep — Dec 2024",
             role: "Software Developer Internship",
             company: "Hospital Lusíadas",

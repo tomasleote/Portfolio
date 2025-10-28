@@ -1,18 +1,35 @@
 import '../styles/ProjectsSection.css'
 import ProjectCard from '../components/ProjectCard'
+import avodahWebsite from '../assets/avodahWebsite.png'
+import papaLeguasWebsite from '../assets/papaLeguasWebsite.png'
 import dataGenPic from '../assets/dataGenPic.png'
 import stockSimPic from '../assets/stockSim.png'
 import flightLogisticsPic from '../assets/FlightLogisticsSimulation.png'
 import lotrSimPic from '../assets/lotrSimulator.png'
+import budgetTrackerPic from '../assets/budgetTracker.png'
 
 function ProjectsSection({ isActive }) {
     const projects = [
+        {
+            title: "Avodah Creatives Website",
+            description: "A modern, responsive website designed and developed for Avodah Creatives as a freelance project. Built with React and styled using Tailwind CSS, the site features a clean and professional design that showcases the creative agency's portfolio and services with smooth animations and an intuitive user experience.",
+            technologies: ["React", "Tailwind CSS", "Responsive Design", "Modern UI/UX"],
+            githubUrl: "https://avodahcreatives.com/",
+            imageUrl: avodahWebsite
+        },
         {
             title: "Budget Tracker",
             description: "A comprehensive full-stack budget tracker application built with React and Node.js, implementing strict MVC architecture patterns for scalable personal finance management. Features transaction management, budget planning, financial analytics, and data import/export capabilities with real-time updates.",
             technologies: ["React", "Node.js", "TypeScript", "PostgreSQL", "Tailwind CSS", "Express.js"],
             githubUrl: "https://github.com/tomasleote/budget_tracker",
-            imageUrl: null
+            imageUrl: budgetTrackerPic
+        },
+        {
+            title: "Monte do Papa Léguas Website",
+            description: "A professional hotel website developed using Wix as per client requirements to enable easy future updates by staff members. Integrated Hey Travel booking system for seamless reservation management. The project focused on creating an intuitive user experience while implementing comprehensive SEO strategies to improve the hotel's online visibility and search engine rankings.",
+            technologies: ["Wix", "Hey Travel Integration", "SEO Optimization", "Web Design"],
+            githubUrl: "https://www.montedopapaleguas.pt/",
+            imageUrl: papaLeguasWebsite
         },
         {
             title: "Multi-Format Data Generator",
