@@ -4,6 +4,7 @@ import Magnet from '../components/effects/Magnet'
 import { useState, useEffect } from 'react'
 import avodahWebsite from '../assets/avodahWebsite.png'
 import papaLeguasWebsite from '../assets/papaLeguasWebsite.png'
+import portfolioWebsite from '../assets/portfolioWebsite.png'
 import dataGenPic from '../assets/dataGenPic.png'
 import stockSimPic from '../assets/stockSim.png'
 import flightLogisticsPic from '../assets/FlightLogisticsSimulation.png'
@@ -45,6 +46,13 @@ function ProjectsSection({ isActive }) {
             technologies: ["Wix", "Hey Travel Integration", "SEO Optimization", "Web Design"],
             githubUrl: "https://www.montedopapaleguas.pt/",
             imageUrl: papaLeguasWebsite
+        },
+        {
+            title: "Personal Portfolio Website",
+            description: "A modern, interactive portfolio website built with React and Vite, featuring a responsive design that adapts seamlessly between desktop and mobile experiences. Implements smooth animations, magnetic hover effects, and dynamic content transitions. The site showcases projects, experience, and skills with an emphasis on clean design and user experience.",
+            technologies: ["React", "Vite", "CSS3", "Responsive Design", "Animation"],
+            githubUrl: "https://github.com/tomasleote/Portfolio",
+            imageUrl: portfolioWebsite
         },
         {
             title: "Multi-Format Data Generator",

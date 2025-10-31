@@ -1,3 +1,4 @@
+import { createPortal } from 'react-dom'
 import '../styles/ImageModal.css'
 
 function ImageModal({ imageUrl, title, isOpen, onClose }) {
@@ -15,7 +16,7 @@ function ImageModal({ imageUrl, title, isOpen, onClose }) {
         }
     };
 
-    return (
+    const modalContent = (
         <div 
             className="modal-overlay" 
             onClick={handleOverlayClick}
@@ -39,6 +40,8 @@ function ImageModal({ imageUrl, title, isOpen, onClose }) {
             </div>
         </div>
     );
+
+    return createPortal(modalContent, document.body);
 }
 
 export default ImageModal;
