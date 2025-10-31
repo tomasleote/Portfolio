@@ -1,5 +1,7 @@
 import '../styles/ProjectsSection.css'
 import ProjectCard from '../components/ProjectCard'
+import Magnet from '../components/effects/Magnet'
+import { useState, useEffect } from 'react'
 import avodahWebsite from '../assets/avodahWebsite.png'
 import papaLeguasWebsite from '../assets/papaLeguasWebsite.png'
 import dataGenPic from '../assets/dataGenPic.png'
@@ -9,6 +11,19 @@ import lotrSimPic from '../assets/lotrSimulator.png'
 import budgetTrackerPic from '../assets/budgetTracker.png'
 
 function ProjectsSection({ isActive }) {
+    const [isMobile, setIsMobile] = useState(false)
+    
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768)
+        }
+        
+        checkMobile()
+        window.addEventListener('resize', checkMobile)
+        
+        return () => window.removeEventListener('resize', checkMobile)
+    }, [])
+    
     const projects = [
         {
             title: "Avodah Creatives Website",
@@ -72,14 +87,31 @@ function ProjectsSection({ isActive }) {
         <div className="projects-content">
             <h2 className="section-title">Projects</h2>
             {projects.map((project, index) => (
-                <ProjectCard
-                    key={index}
-                    title={project.title}
-                    description={project.description}
-                    technologies={project.technologies}
-                    githubUrl={project.githubUrl}
-                    imageUrl={project.imageUrl}
-                />
+                isMobile ? (
+                    <ProjectCard
+                        key={index}
+                        title={project.title}
+                        description={project.description}
+                        technologies={project.technologies}
+                        githubUrl={project.githubUrl}
+                        imageUrl={project.imageUrl}
+                    />
+                ) : (
+                    <Magnet 
+                        key={index}
+                        padding={50}
+                        magnetStrength={10}
+                        wrapperClassName="magnet-wrapper"
+                    >
+                        <ProjectCard
+                            title={project.title}
+                            description={project.description}
+                            technologies={project.technologies}
+                            githubUrl={project.githubUrl}
+                            imageUrl={project.imageUrl}
+                        />
+                    </Magnet>
+                )
             ))}
             
             <div className="section-link">

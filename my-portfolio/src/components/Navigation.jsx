@@ -1,13 +1,24 @@
+import { useState, useEffect } from 'react'
 import '../styles/Navigation.css'
 import SocialMediaIcon from './SocialMediaIcon'
 
 function Navigation({ activeSection, onSectionClick }) {
+    const titles = ['Software Engineer', 'Full-Stack Everything', 'Bedroom DJ']
+    const [currentTitleIndex, setCurrentTitleIndex] = useState(0)
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % titles.length)
+        }, 3000) // Change every 3 seconds
+
+        return () => clearInterval(interval)
+    }, [])
 
     return (
         <nav className="sidebar-nav">
             <div className="nav-header">
                 <h1>Tomás Leote Falcão</h1>
-                <h3>Software Developer</h3>
+                <h3 key={currentTitleIndex} className="rotating-subtitle">{titles[currentTitleIndex]}</h3>
             </div>
             
             <div className="nav-buttons">

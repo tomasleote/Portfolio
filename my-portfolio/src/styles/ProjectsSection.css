@@ -6,6 +6,11 @@
     text-align: left;
 }
 
+.magnet-wrapper {
+    width: 100%;
+    display: block;
+}
+
 .section-title {
     font-size: 1.5rem;
     font-weight: 700;

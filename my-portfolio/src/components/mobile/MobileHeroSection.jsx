@@ -1,7 +1,19 @@
+import { useState, useEffect } from 'react'
 import SocialMediaIcon from '../SocialMediaIcon'
 import '../../styles/MobileHeroSection.css'
 
 function MobileHeroSection() {
+    const titles = ['Software Engineer', 'Full-Stack Everything', 'Bedroom DJ']
+    const [currentTitleIndex, setCurrentTitleIndex] = useState(0)
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % titles.length)
+        }, 3000) // Change every 3 seconds
+
+        return () => clearInterval(interval)
+    }, [])
+
     return (
         <section className="mobile-hero-section">
             <div className="mobile-hero-content">
@@ -9,7 +21,7 @@ function MobileHeroSection() {
                     <h1 className="mobile-hero-title">
                         Tomás Leote Falcão
                     </h1>
-                    <p className="mobile-hero-subtitle">Software Developer</p>
+                    <p key={currentTitleIndex} className="mobile-hero-subtitle rotating-subtitle">{titles[currentTitleIndex]}</p>
                     <p className="mobile-hero-tagline">
                         Building digital experiences with modern web technologies
                     </p>
