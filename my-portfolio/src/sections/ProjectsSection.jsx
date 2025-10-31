@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react'
 import avodahWebsite from '../assets/avodahWebsite.png'
 import papaLeguasWebsite from '../assets/papaLeguasWebsite.png'
 import portfolioWebsite from '../assets/portfolioWebsite.png'
+import thesisDemoVid from '../assets/thesisDemoVid.mp4'
+import thesisPdf from '../assets/thesis.pdf'
 import dataGenPic from '../assets/dataGenPic.png'
 import stockSimPic from '../assets/stockSim.png'
 import flightLogisticsPic from '../assets/FlightLogisticsSimulation.png'
@@ -32,6 +34,15 @@ function ProjectsSection({ isActive }) {
             technologies: ["React", "Tailwind CSS", "Responsive Design", "Modern UI/UX"],
             githubUrl: "https://avodahcreatives.com/",
             imageUrl: avodahWebsite
+        },
+        {
+            title: "Thesis Project: Platform Usage Statistics Interface",
+            description: "A comprehensive analytics dashboard developed during a full-time internship at Klippa for my bachelor's thesis. Built with Angular, GraphQL, and Highcharts to provide scalable data visualizations and strategic insights into platform usage for business clients. Click the video preview to watch a demo, or download the thesis PDF to read the full research and implementation details.",
+            technologies: ["Angular", "GraphQL", "Highcharts", "TypeScript", "Data Visualization"],
+            githubUrl: "https://www.klippa.com/en/home-en/",
+            videoUrl: thesisDemoVid,
+            documentUrl: thesisPdf,
+            documentLabel: "Download Thesis PDF"
         },
         {
             title: "Budget Tracker",
@@ -103,6 +114,9 @@ function ProjectsSection({ isActive }) {
                         technologies={project.technologies}
                         githubUrl={project.githubUrl}
                         imageUrl={project.imageUrl}
+                        videoUrl={project.videoUrl}
+                        documentUrl={project.documentUrl}
+                        documentLabel={project.documentLabel}
                     />
                 ) : (
                     <Magnet 
@@ -117,6 +131,9 @@ function ProjectsSection({ isActive }) {
                             technologies={project.technologies}
                             githubUrl={project.githubUrl}
                             imageUrl={project.imageUrl}
+                            videoUrl={project.videoUrl}
+                            documentUrl={project.documentUrl}
+                            documentLabel={project.documentLabel}
                         />
                     </Magnet>
                 )

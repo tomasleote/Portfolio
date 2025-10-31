@@ -1,37 +1,71 @@
 import '../styles/ProjectCard.css'
 import { useState } from 'react'
 import ImageModal from './ImageModal'
+import VideoModal from './VideoModal'
 
-function ProjectCard({ title, description, technologies, githubUrl, imageUrl }) {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+function ProjectCard({ 
+    title, 
+    description, 
+    technologies, 
+    githubUrl, 
+    imageUrl, 
+    videoUrl, 
+    documentUrl,
+    documentLabel = 'Download Document'
+}) {
+    const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+    const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
     const handleCardClick = (e) => {
-        // Don't open GitHub if clicking on image
-        if (e.target.closest('.project-image-container')) {
+        // Don't open GitHub if clicking on image/video or download button
+        if (e.target.closest('.project-image-container') || e.target.closest('.document-download-btn')) {
             return;
         }
         window.open(githubUrl, '_blank');
     };
 
-    const handleImageClick = (e) => {
+    const handleMediaClick = (e) => {
         e.stopPropagation();
-        if (imageUrl) {
-            setIsModalOpen(true);
+        if (videoUrl) {
+            setIsVideoModalOpen(true);
+        } else if (imageUrl) {
+            setIsImageModalOpen(true);
         }
     };
 
-    const closeModal = () => {
-        setIsModalOpen(false);
+    const closeImageModal = () => {
+        setIsImageModalOpen(false);
+    };
+
+    const closeVideoModal = () => {
+        setIsVideoModalOpen(false);
+    };
+
+    const handleDocumentDownload = (e) => {
+        e.stopPropagation();
+        window.open(documentUrl, '_blank');
     };
 
     return (
         <>
             <div className="project-card" onClick={handleCardClick}>
-                <div className="project-image-container" onClick={handleImageClick}>
-                    {imageUrl ? (
+                <div className="project-image-container" onClick={handleMediaClick}>
+                    {videoUrl ? (
+                        <video 
+                            src={videoUrl} 
+                            className="project-image project-video"
+                            muted
+                            playsInline
+                        />
+                    ) : imageUrl ? (
                         <img src={imageUrl} alt={title} className="project-image" />
                     ) : (
                         <div className="project-image-placeholder"></div>
+                    )}
+                    {videoUrl && (
+                        <div className="video-play-overlay">
+                            <span className="play-icon">▶</span>
+                        </div>
                     )}
                 </div>
                 
@@ -46,15 +80,33 @@ function ProjectCard({ title, description, technologies, githubUrl, imageUrl }) 
                             </span>
                         ))}
                     </div>
+                    
+                    {documentUrl && (
+                        <button 
+                            className="document-download-btn"
+                            onClick={handleDocumentDownload}
+                        >
+                            📄 {documentLabel}
+                        </button>
+                    )}
                 </div>
             </div>
             
             <ImageModal 
                 imageUrl={imageUrl}
                 title={title}
-                isOpen={isModalOpen}
-                onClose={closeModal}
+                isOpen={isImageModalOpen}
+                onClose={closeImageModal}
             />
+            
+            {videoUrl && (
+                <VideoModal 
+                    videoUrl={videoUrl}
+                    title={title}
+                    isOpen={isVideoModalOpen}
+                    onClose={closeVideoModal}
+                />
+            )}
         </>
     )
 }

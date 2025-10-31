@@ -22,6 +22,7 @@
     justify-content: center;
     cursor: zoom-in;
     transition: all 0.3s ease;
+    position: relative;
 }
 
 .project-image {
@@ -30,6 +31,31 @@
     object-fit: cover;
     border-radius: 4px;
     transition: transform 0.3s ease;
+}
+
+.project-video {
+    pointer-events: none;
+}
+
+.video-play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.play-icon {
+    font-size: 2.5rem;
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
 }
 
 .project-image-placeholder {
@@ -89,6 +115,32 @@
     white-space: nowrap;
 }
 
+.document-download-btn {
+    margin-top: 12px;
+    padding: 8px 16px;
+    background-color: rgba(100, 255, 218, 0.1);
+    color: #64ffda;
+    border: 1px solid rgba(100, 255, 218, 0.3);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: inherit;
+    width: fit-content;
+    white-space: nowrap;
+}
+
+.document-download-btn:hover {
+    background-color: rgba(100, 255, 218, 0.2);
+    border-color: rgba(100, 255, 218, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(100, 255, 218, 0.2);
+}
+
 /* Hover Effects */
 .project-card:hover {
     background-color: rgba(100, 255, 218, 0.03);
@@ -106,6 +158,15 @@
 
 .project-card:hover .project-image {
     transform: scale(1.05);
+}
+
+.project-image-container:hover .video-play-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.project-image-container:hover .play-icon {
+    transform: scale(1.15);
+    color: #64ffda;
 }
 
 .project-image-container:hover {
@@ -161,6 +222,20 @@
     .tech-tag {
         font-size: 0.7rem;
         padding: 3px 8px;
+    }
+    
+    .document-download-btn {
+        font-size: 0.8rem;
+        padding: 7px 14px;
+        margin-top: 10px;
+    }
+    
+    .document-download-btn:hover {
+        transform: none;
+    }
+    
+    .document-download-btn:active {
+        background-color: rgba(100, 255, 218, 0.25);
     }
     
     /* Disable hover on mobile */
