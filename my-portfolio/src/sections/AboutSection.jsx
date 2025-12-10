@@ -2,8 +2,8 @@ import '../styles/AboutSection.css'
 
 function AboutSection({ isActive }) {
     const currentTechStack = [
-        "JavaScript", "Java", "TypeScript", "React", "Angular", "Vue", 
-        ".NET", "C", "C++", "R", "HTML", "CSS", "Node.js", "Figma", "GitHub"
+        "TypeScript", "JavaScript", "Java", "Python", "React", "Angular", "Vue", 
+        ".NET", "C", "R", "HTML", "CSS", "Node.js", "Figma", "GitHub"
     ];
 
     return (
