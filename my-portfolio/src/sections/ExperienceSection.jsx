@@ -20,7 +20,7 @@ function ExperienceSection({ isActive }) {
     
     const experiences = [
         {
-            timeframe: "Sep 2024 — Present",
+            timeframe: "Sep 2025 — Present",
             role: "Freelance Software Developer",
             company: "Avodah Creatives",
             companyUrl: "https://avodahcreatives.com/",
