@@ -1,6 +1,6 @@
 import '../styles/ExperienceCard.css'
 
-function ExperienceCard({ timeframe, role, company, companyUrl, description, technologies }) {
+function ExperienceCard({ timeframe, role, company, location, companyUrl, description, technologies }) {
     const handleCardClick = () => {
         if (companyUrl) {
             window.open(companyUrl, '_blank')
@@ -8,7 +8,7 @@ function ExperienceCard({ timeframe, role, company, companyUrl, description, tec
     }
 
     return (
-        <div 
+        <div
             className={`experience-item ${companyUrl ? 'clickable' : ''}`}
             onClick={handleCardClick}
         >
@@ -19,6 +19,9 @@ function ExperienceCard({ timeframe, role, company, companyUrl, description, tec
                 <h3 className="experience-title">
                     {role} · {company}
                 </h3>
+                <p className="experience-location">
+                    {location}
+                </p>
                 <p className="experience-description">
                     {description}
                 </p>
