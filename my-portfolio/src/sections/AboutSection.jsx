@@ -2,18 +2,34 @@ import '../styles/AboutSection.css'
 
 function AboutSection({ isActive }) {
     const currentTechStack = [
-        "TypeScript", "JavaScript", "Java", "Python", "React", "Angular", "Vue", 
+        "TypeScript", "JavaScript", "Java", "React", "Angular", "Vue", "Outsystems", "Python",
         ".NET", "C", "R", "HTML", "CSS", "Node.js", "Figma", "GitHub"
     ];
 
+    const calculateAge = () => {
+        const birthDate = new Date(2001, 11, 13); // Month is 0-indexed (11 = December)
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+
+        // Adjust age if birthday hasn't occurred yet this year
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+
+        return age;
+    };
+
+    const age = calculateAge();
+
     return (
         <div className='about-content'>
-            <p className='about-text'> 
-                Hey there! I'm a recent Computing Science graduate from the University of Groningen who genuinely enjoys building web applications and creating digital experiences. Beyond coding, I have a big passion for travelling, discovering new music, and outdoor sports.
+            <p className='about-text'>
+                Hello! I'm Tomás, a {age}-year-old software developer based in Lisbon, and I'm someone who gets excited about bringing ideas to life, whether that's organizing music events, building websites and new software, or just figuring out how to make something work that didn't exist before.
             </p>
             
-            <p className='about-text'> 
-                Currently, I'm working as a freelancer for Avodah Creatives, where I'm helping to build their product and website from scratch. I focus on developing UI components and ensuring our applications meet web accessibility standards and best practices to deliver an inclusive user experience that everyone can enjoy.    
+            <p className='about-text'>
+                Currently, I'm working as a Junior Software Developer at Minsait, where I'm expanding my skillset to work with low-code tools such as OutSystems. As part of the Low Code and Innovation team, I work on various full-stack projects for different clients, ensuring our applications meet web accessibility standards and best practices to deliver an inclusive user experience that everyone can enjoy.
             </p>
             
             <p className='about-text'> 

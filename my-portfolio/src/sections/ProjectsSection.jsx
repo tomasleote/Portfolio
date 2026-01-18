@@ -74,8 +74,8 @@ function ProjectsSection({ isActive }) {
         },
         {
             title: "Stock Market Simulator",
-            description: "A real-time stock market trading system simulation featuring automated trading bots with various strategies. Implements client-server architecture with networking modules, supports limit and market orders, and provides real-time portfolio management with a dynamic UI displaying live market activity.",
-            technologies: ["Java", "Maven", "Networking", "Multi-threading", "UI Design"],
+            description: "A networking and messaging project that simulates a real-time stock market environment with automated trading bots. Traders communicate with the Stock Market through a networking module, sending messages to a PriorityBlockingQueue for processing. Features different order types, real-time price updates, portfolio management, and a UI displaying live exchange activity. Built to learn network communication and message queue patterns.",
+            technologies: ["Java", "Networking", "PriorityBlockingQueue", "Message Queues", "Client-Server Architecture"],
             githubUrl: "https://github.com/tomasleote/stockMarket_simulator",
             imageUrl: stockSimPic
         },

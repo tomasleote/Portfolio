@@ -30,7 +30,7 @@ function ExperienceSection({ isActive }) {
         },
         {
             timeframe: "Sep 2025 — Jan 2026",
-            role: "Freelance Software Developer",
+            role: "Software Developer",
             company: "Avodah Creatives",
             location: "Remote (Amsterdam, Netherlands)",
             companyUrl: "https://avodahcreatives.com/",
