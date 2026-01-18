@@ -1,7 +1,7 @@
 import '../styles/ExperienceSection.css'
 import ExperienceCard from '../components/ExperienceCard'
 import Magnet from '../components/effects/Magnet'
-import cvFile from '../assets/CV_TomasLeote_Groningen_2025.pdf'
+import cvFile from '../assets/CV_TomasLeote_Lisboa_2026.pdf'
 import { useState, useEffect } from 'react'
 
 function ExperienceSection({ isActive }) {
