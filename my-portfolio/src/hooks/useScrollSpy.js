@@ -3,21 +3,30 @@ import { useState, useEffect } from 'react'
 /**
  * Simple scroll spy hook using scroll events as backup
  * @param {Array} sectionIds - Array of section IDs to track
+ * @param {string} rootElementId - ID of the scrolling container (optional)
  * @returns {string} The ID of the currently active section
  */
-const useScrollSpyBackup = (sectionIds) => {
+const useScrollSpyBackup = (sectionIds, rootElementId = null) => {
   const [activeSection, setActiveSection] = useState(sectionIds[0] || '')
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200 // Offset for better detection
+      const scrollContainer = rootElementId ? document.getElementById(rootElementId) : window
+      const scrollPosition = (rootElementId ? scrollContainer.scrollTop : window.scrollY) + 200 // Offset for better detection
 
       for (let i = sectionIds.length - 1; i >= 0; i--) {
         const element = document.getElementById(sectionIds[i])
         if (element) {
-          const rect = element.getBoundingClientRect()
-          const elementTop = rect.top + window.scrollY
-          
+          let elementTop;
+          if (rootElementId) {
+            const containerRect = document.getElementById(rootElementId).getBoundingClientRect();
+            const rect = element.getBoundingClientRect();
+            elementTop = rect.top - containerRect.top + document.getElementById(rootElementId).scrollTop;
+          } else {
+            const rect = element.getBoundingClientRect()
+            elementTop = rect.top + window.scrollY
+          }
+
           if (scrollPosition >= elementTop) {
             if (activeSection !== sectionIds[i]) {
               setActiveSection(sectionIds[i])
@@ -32,12 +41,17 @@ const useScrollSpyBackup = (sectionIds) => {
     handleScroll()
 
     // Add scroll listener
-    window.addEventListener('scroll', handleScroll, { passive: true })
+    const scrollContainer = rootElementId ? document.getElementById(rootElementId) : window
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', handleScroll, { passive: true })
+    }
 
     return () => {
-      window.removeEventListener('scroll', handleScroll)
+      if (scrollContainer) {
+        scrollContainer.removeEventListener('scroll', handleScroll)
+      }
     }
-  }, [sectionIds, activeSection])
+  }, [sectionIds, activeSection, rootElementId])
 
   return activeSection
 }
@@ -45,9 +59,10 @@ const useScrollSpyBackup = (sectionIds) => {
 /**
  * Enhanced scroll spy hook with Intersection Observer and fallback
  * @param {Array} sectionIds - Array of section IDs to track
+ * @param {string} rootElementId - ID of the scrolling container (optional)
  * @returns {string} The ID of the currently active section
  */
-const useScrollSpy = (sectionIds) => {
+const useScrollSpy = (sectionIds, rootElementId = null) => {
   const [activeSection, setActiveSection] = useState(sectionIds[0] || '')
   const [useBackup, setUseBackup] = useState(false)
 
@@ -62,18 +77,18 @@ const useScrollSpy = (sectionIds) => {
     const observer = new IntersectionObserver(
       (entries) => {
         const visibleEntries = entries.filter(entry => entry.isIntersecting)
-        
+
         if (visibleEntries.length > 0) {
           // Get the first visible section (topmost)
           const topSection = visibleEntries.reduce((top, current) => {
             return current.boundingClientRect.top < top.boundingClientRect.top ? current : top
           })
-          
+
           setActiveSection(topSection.target.id)
         }
       },
       {
-        root: null,
+        root: rootElementId ? document.getElementById(rootElementId) : null,
         rootMargin: '-10% 0px -50% 0px',
         threshold: 0.1
       }
@@ -101,7 +116,7 @@ const useScrollSpy = (sectionIds) => {
   }, [sectionIds])
 
   // Backup scroll spy
-  const backupActiveSection = useScrollSpyBackup(sectionIds)
+  const backupActiveSection = useScrollSpyBackup(sectionIds, rootElementId)
 
   return useBackup ? backupActiveSection : activeSection
 }

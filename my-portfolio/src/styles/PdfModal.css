@@ -1,0 +1,16 @@
+.pdf-modal-content {
+    width: 90%;
+    max-width: 1000px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-pdf {
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+    border: none;
+    background-color: #fff;
+    border-radius: 4px;
+}

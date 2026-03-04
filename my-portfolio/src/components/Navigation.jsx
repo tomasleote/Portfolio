@@ -20,12 +20,12 @@ function Navigation({ activeSection, onSectionClick }) {
                 <h1>Tomás Leote Falcão</h1>
                 <h3 key={currentTitleIndex} className="rotating-subtitle">{titles[currentTitleIndex]}</h3>
             </div>
-            
+
             <div className="nav-buttons">
                 <button
                     className={activeSection === 'about' ? 'active' : 'inactive'}
                     onClick={() => onSectionClick('about')}
-                > 
+                >
                     About
                 </button>
                 <button
@@ -34,34 +34,40 @@ function Navigation({ activeSection, onSectionClick }) {
                 >
                     Experience
                 </button>
-                <button 
+                <button
                     className={activeSection === 'projects' ? 'active' : 'inactive'}
                     onClick={() => onSectionClick('projects')}
-                > 
-                    Projects 
+                >
+                    Projects
+                </button>
+                <button
+                    className={activeSection === 'certifications' ? 'active' : 'inactive'}
+                    onClick={() => onSectionClick('certifications')}
+                >
+                    Certifications
                 </button>
             </div>
-            
+
             <div className="social-links">
-                <SocialMediaIcon 
-                    icon="fa-linkedin-in" 
-                    url="https://www.linkedin.com/in/tom%C3%A1s-leote-falc%C3%A3o-a81860266/" 
-                    label="LinkedIn" 
+                <SocialMediaIcon
+                    icon="fa-linkedin-in"
+                    url="https://www.linkedin.com/in/tom%C3%A1s-leote-falc%C3%A3o-a81860266/"
+                    label="LinkedIn"
                 />
-                <SocialMediaIcon 
-                    icon="fa-github" 
-                    url="https://github.com/tomasleote" 
-                    label="GitHub" 
+                <SocialMediaIcon
+                    icon="fa-github"
+                    url="https://github.com/tomasleote"
+                    label="GitHub"
                 />
-                <SocialMediaIcon 
-                    icon="fa-envelope" 
-                    url="mailto:tomas.leote@gmail.com" 
-                    label="Email" 
+                <SocialMediaIcon
+                    icon="fa-envelope"
+                    url="mailto:tomas.leote@gmail.com"
+                    label="Email"
                 />
-                <SocialMediaIcon 
-                    icon="fa-spotify" 
-                    url="https://open.spotify.com/user/11123207778?si=95bcfbeef7aa4209" 
-                    label="Spotify" 
+                <SocialMediaIcon
+                    icon="fa-spotify"
+                    url="https://open.spotify.com/user/11123207778?si=95bcfbeef7aa4209"
+                    label="Spotify"
                 />
             </div>
         </nav>

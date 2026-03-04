@@ -16,7 +16,7 @@ function MobileMenu({ activeSection, onSectionClick }) {
     return (
         <>
             {/* Hamburger Button */}
-            <button 
+            <button
                 className={`hamburger ${isOpen ? 'active' : ''}`}
                 onClick={toggleMenu}
                 aria-label="Toggle menu"
@@ -53,6 +53,12 @@ function MobileMenu({ activeSection, onSectionClick }) {
                             onClick={() => handleSectionClick('projects')}
                         >
                             Projects
+                        </button>
+                        <button
+                            className={`mobile-nav-item ${activeSection === 'certifications' ? 'active' : ''}`}
+                            onClick={() => handleSectionClick('certifications')}
+                        >
+                            Certifications
                         </button>
                     </nav>
                 </div>
