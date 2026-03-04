@@ -12,22 +12,30 @@ import stockSimPic from '../assets/stockSim.png'
 import flightLogisticsPic from '../assets/FlightLogisticsSimulation.png'
 import lotrSimPic from '../assets/lotrSimulator.png'
 import budgetTrackerPic from '../assets/budgetTracker.png'
+import findADayPic from '../assets/findADay.png'
 
 function ProjectsSection({ isActive }) {
     const [isMobile, setIsMobile] = useState(false)
-    
+
     useEffect(() => {
         const checkMobile = () => {
             setIsMobile(window.innerWidth <= 768)
         }
-        
+
         checkMobile()
         window.addEventListener('resize', checkMobile)
-        
+
         return () => window.removeEventListener('resize', checkMobile)
     }, [])
-    
+
     const projects = [
+        {
+            title: "FindADay: Scheduling App",
+            description: "FindADay was born out of the frustration of trying to coordinate a group trip where no one could agree on a date. I couldn't find a tool that made it easy, so I built one. FindADay is a scheduling tool with no accounts required. Whether you’re planning a dinner or a vacation, just create a link, collect availability, and let the integrated heatmap show you exactly when everyone is free. I built this using React and Firebase.",
+            technologies: ["React", "Firebase", "Tailwind CSS", "Vercel", "Google Places API"],
+            githubUrl: "https://findaday.cc",
+            imageUrl: findADayPic
+        },
         {
             title: "Avodah Creatives Website",
             description: "A modern, responsive website designed and developed for Avodah Creatives as a freelance project. Built with React and styled using Tailwind CSS, the site features a clean and professional design that showcases the creative agency's portfolio and services with smooth animations and an intuitive user experience.",
@@ -119,7 +127,7 @@ function ProjectsSection({ isActive }) {
                         documentLabel={project.documentLabel}
                     />
                 ) : (
-                    <Magnet 
+                    <Magnet
                         key={index}
                         padding={50}
                         magnetStrength={10}
@@ -138,11 +146,11 @@ function ProjectsSection({ isActive }) {
                     </Magnet>
                 )
             ))}
-            
+
             <div className="section-link">
-                <a 
-                    href="https://github.com/tomasleote" 
-                    target="_blank" 
+                <a
+                    href="https://github.com/tomasleote"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="view-all-link"
                 >
