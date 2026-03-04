@@ -1,23 +1,22 @@
 import '../styles/ExperienceSection.css'
 import ExperienceCard from '../components/ExperienceCard'
-import Magnet from '../components/effects/Magnet'
 import cvFile from '../assets/CV_TomasLeote_Lisboa_2026.pdf'
 import { useState, useEffect } from 'react'
 
 function ExperienceSection({ isActive }) {
     const [isMobile, setIsMobile] = useState(false)
-    
+
     useEffect(() => {
         const checkMobile = () => {
             setIsMobile(window.innerWidth <= 768)
         }
-        
+
         checkMobile()
         window.addEventListener('resize', checkMobile)
-        
+
         return () => window.removeEventListener('resize', checkMobile)
     }, [])
-    
+
     const experiences = [
         {
             timeframe: "Jan 2026 — Present",
@@ -70,41 +69,22 @@ function ExperienceSection({ isActive }) {
         <div className="experience-content">
             <h2 className="section-title">Experience</h2>
             {experiences.map((exp, index) => (
-                isMobile ? (
-                    <ExperienceCard
-                        key={index}
-                        timeframe={exp.timeframe}
-                        role={exp.role}
-                        company={exp.company}
-                        location={exp.location}
-                        companyUrl={exp.companyUrl}
-                        description={exp.description}
-                        technologies={exp.technologies}
-                    />
-                ) : (
-                    <Magnet
-                        key={index}
-                        padding={50}
-                        magnetStrength={10}
-                        wrapperClassName="magnet-wrapper"
-                    >
-                        <ExperienceCard
-                            timeframe={exp.timeframe}
-                            role={exp.role}
-                            company={exp.company}
-                            location={exp.location}
-                            companyUrl={exp.companyUrl}
-                            description={exp.description}
-                            technologies={exp.technologies}
-                        />
-                    </Magnet>
-                )
+                <ExperienceCard
+                    key={index}
+                    timeframe={exp.timeframe}
+                    role={exp.role}
+                    company={exp.company}
+                    location={exp.location}
+                    companyUrl={exp.companyUrl}
+                    description={exp.description}
+                    technologies={exp.technologies}
+                />
             ))}
-            
+
             <div className="section-link">
-                <a 
+                <a
                     href={cvFile}
-                    target="_blank" 
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="view-all-link"
                 >

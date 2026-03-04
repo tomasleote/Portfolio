@@ -1,6 +1,5 @@
 import '../styles/ProjectsSection.css'
 import ProjectCard from '../components/ProjectCard'
-import Magnet from '../components/effects/Magnet'
 import { useState, useEffect } from 'react'
 import avodahWebsite from '../assets/avodahWebsite.png'
 import papaLeguasWebsite from '../assets/papaLeguasWebsite.png'
@@ -114,37 +113,17 @@ function ProjectsSection({ isActive }) {
         <div className="projects-content">
             <h2 className="section-title">Projects</h2>
             {projects.map((project, index) => (
-                isMobile ? (
-                    <ProjectCard
-                        key={index}
-                        title={project.title}
-                        description={project.description}
-                        technologies={project.technologies}
-                        githubUrl={project.githubUrl}
-                        imageUrl={project.imageUrl}
-                        videoUrl={project.videoUrl}
-                        documentUrl={project.documentUrl}
-                        documentLabel={project.documentLabel}
-                    />
-                ) : (
-                    <Magnet
-                        key={index}
-                        padding={50}
-                        magnetStrength={10}
-                        wrapperClassName="magnet-wrapper"
-                    >
-                        <ProjectCard
-                            title={project.title}
-                            description={project.description}
-                            technologies={project.technologies}
-                            githubUrl={project.githubUrl}
-                            imageUrl={project.imageUrl}
-                            videoUrl={project.videoUrl}
-                            documentUrl={project.documentUrl}
-                            documentLabel={project.documentLabel}
-                        />
-                    </Magnet>
-                )
+                <ProjectCard
+                    key={index}
+                    title={project.title}
+                    description={project.description}
+                    technologies={project.technologies}
+                    githubUrl={project.githubUrl}
+                    imageUrl={project.imageUrl}
+                    videoUrl={project.videoUrl}
+                    documentUrl={project.documentUrl}
+                    documentLabel={project.documentLabel}
+                />
             ))}
 
             <div className="section-link">

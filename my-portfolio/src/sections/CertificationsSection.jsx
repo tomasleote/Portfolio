@@ -1,6 +1,5 @@
 import '../styles/CertificationsSection.css'
 import CertificateCard from '../components/CertificateCard'
-import Magnet from '../components/effects/Magnet'
 import { useState, useEffect } from 'react'
 import o11Cert from '../assets/certifications/O11AssociateDeveloper.pdf'
 import agileCert from '../assets/certifications/AgileFundamentals.pdf'
@@ -45,25 +44,11 @@ function CertificationsSection({ isActive }) {
             <h2 className="section-title">Certifications</h2>
             <div className="certifications-grid">
                 {certifications.map((cert, index) => (
-                    isMobile ? (
-                        <CertificateCard
-                            key={index}
-                            title={cert.title}
-                            pdfUrl={cert.pdfUrl}
-                        />
-                    ) : (
-                        <Magnet
-                            key={index}
-                            padding={20}
-                            magnetStrength={5}
-                            wrapperClassName="magnet-wrapper-cert"
-                        >
-                            <CertificateCard
-                                title={cert.title}
-                                pdfUrl={cert.pdfUrl}
-                            />
-                        </Magnet>
-                    )
+                    <CertificateCard
+                        key={index}
+                        title={cert.title}
+                        pdfUrl={cert.pdfUrl}
+                    />
                 ))}
             </div>
         </div>
