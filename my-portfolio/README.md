@@ -1,8 +1,7 @@
-# Modern Developer Portfolio
+# Developer Portfolio
 
-A powerful, interactive, and responsive portfolio template designed for software engineers, developers, and creatives. Built with React and Vite, it features a sleek two-column layout, smooth scroll-spy navigation, and dynamic modals to showcase your experience, projects, and certifications.
-
-![Portfolio Preview](./public/vite.svg) *<!-- Replace with a screenshot of your portfolio -->*
+A portfolio template designed for software engineers, developers, and creatives. Built with React and Vite, it features a sleek two-column layout, smooth scroll-spy navigation, and dynamic modals to showcase your experience, projects, and certifications.
+Check it out here: https://tomasleotefalcao.vercel.app/
 
 ## 🚀 Technologies Used
 
@@ -104,4 +103,4 @@ This commands compiles and optimizes the project into the `dist/` directory, whi
 ## 📄 License & Attribution
 Feel free to fork, adapt, and use this layout for your own personal portfolio. Mentioning where you got the template is highly appreciated but completely optional! 
 
-Built with ❤️ by [Tomás Leote Falcão](https://github.com/tomasleote)
+Built by [Tomás Leote Falcão](https://github.com/tomasleote)
