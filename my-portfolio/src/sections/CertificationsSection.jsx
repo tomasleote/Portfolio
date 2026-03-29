@@ -1,7 +1,9 @@
 import '../styles/CertificationsSection.css'
 import CertificateCard from '../components/CertificateCard'
 import { useState, useEffect } from 'react'
+import agenticAICert from '../assets/certifications/AgenticAI.pdf'
 import o11Cert from '../assets/certifications/O11AssociateDeveloper.pdf'
+import odcCert from '../assets/certifications/ODC.pdf'
 import agileCert from '../assets/certifications/AgileFundamentals.pdf'
 import jsCert from '../assets/certifications/jsForBeginners.pdf'
 import sqlCert from '../assets/certifications/SqlForBeginners.pdf'
@@ -27,7 +29,9 @@ function CertificationsSection({ isActive }) {
     }, [])
 
     const certifications = [
+        { title: "Outsystems Agentic AI Specialization", pdfUrl: agenticAICert },
         { title: "Outsystems O11 Associate Developer", pdfUrl: o11Cert },
+        { title: "Outsystems ODC Associate Developer", pdfUrl: odcCert },
         { title: "Agile Fundamentals: Including Scrum & Kanban", pdfUrl: agileCert },
         { title: "JavaScript Basics for Beginners", pdfUrl: jsCert },
         { title: "Microsoft SQL for Beginners", pdfUrl: sqlCert },
