@@ -15,7 +15,7 @@
     height: 140px;
     border-radius: 4px;
     overflow: hidden;
-    background-color: rgba(100, 255, 218, 0.05);
+    background-color: var(--color-bg-hover);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,7 +28,7 @@
     margin: -20px;
     border: none;
     pointer-events: none;
-    background-color: #fff;
+    background-color: var(--color-white);
 }
 
 .certificate-overlay {
@@ -47,7 +47,7 @@
 
 .expand-icon {
     font-size: 2rem;
-    color: #64ffda;
+    color: var(--color-accent);
     transform: scale(0.8);
     transition: transform 0.3s ease;
 }
@@ -55,12 +55,14 @@
 .certificate-details {
     display: flex;
     flex-direction: column;
+    min-width: 0;
+    word-break: break-word;
 }
 
 .certificate-title {
-    font-size: 1.125rem;
+    font-size: var(--fs-base);
     font-weight: 600;
-    color: #ffffff;
+    color: var(--color-white);
     margin: 0;
     line-height: 1.4;
     transition: color 0.3s ease;
@@ -68,13 +70,13 @@
 
 /* Hover Effects */
 .certificate-card:hover {
-    background-color: rgba(100, 255, 218, 0.05);
-    box-shadow: 0 8px 32px rgba(100, 255, 218, 0.1);
+    background-color: var(--color-bg-hover);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     transform: translateY(-2px);
 }
 
 .certificate-card:hover .certificate-title {
-    color: #64ffda;
+    color: var(--color-accent);
 }
 
 .certificate-preview-container:hover .certificate-overlay {
@@ -104,8 +106,8 @@
         grid-template-columns: 1fr;
         gap: 16px;
         padding: 16px;
-        background-color: rgba(100, 255, 218, 0.02);
-        border: 1px solid rgba(100, 255, 218, 0.05);
+        background-color: var(--color-bg);
+        border: 1px solid var(--color-border);
     }
 
     .certificate-preview-container {
@@ -115,7 +117,7 @@
     }
 
     .certificate-title {
-        font-size: 1rem;
+        font-size: var(--fs-base);
         text-align: center;
     }
 

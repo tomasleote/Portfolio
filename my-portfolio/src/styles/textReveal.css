@@ -1,0 +1,3 @@
+.text-reveal {
+  will-change: transform, opacity, clip-path;
+}
