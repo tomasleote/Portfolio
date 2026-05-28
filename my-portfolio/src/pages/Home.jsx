@@ -1,23 +1,28 @@
 import { useState, useEffect, useRef } from 'react'
 import AnimatedLink from '../components/ui/AnimatedLink'
 import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 import '../styles/home.css'
 
 const TITLES = ['Software Engineer', 'Full-Stack Everything', 'Bedroom DJ']
 
-export default function Home() {
+export default function Home({ preloaderDone }) {
   const [titleIndex, setTitleIndex] = useState(0)
+  const containerRef = useRef(null)
   const nameRef = useRef(null)
   const subtitleRef = useRef(null)
   const linksRef = useRef([])
-  const hasAnimated = useRef(false)
 
-  // Entrance animation (once)
-  useEffect(() => {
-    if (hasAnimated.current) return
-    hasAnimated.current = true
+  // Ensure elements start hidden instantly on mount
+  useGSAP(() => {
+    gsap.set([nameRef.current, subtitleRef.current, ...linksRef.current], { opacity: 0, y: 40 })
+  }, { scope: containerRef })
 
-    console.log('[Home] Starting entrance animation (3s delay)')
+  // Trigger entrance animation only when preloader is finished
+  useGSAP(() => {
+    if (!preloaderDone) return
+
+    console.log('[Home] Preloader done — starting entrance animation')
 
     // Cancel the CSS fallback animations so GSAP can take over cleanly
     const elements = [nameRef.current, subtitleRef.current, ...linksRef.current].filter(Boolean)
@@ -25,12 +30,7 @@ export default function Home() {
       if (el) el.style.animation = 'none'
     })
 
-    // Set initial hidden state via GSAP (replaces CSS animation start)
-    gsap.set(nameRef.current, { opacity: 0, y: 60 })
-    gsap.set(subtitleRef.current, { opacity: 0, y: 40 })
-    gsap.set(linksRef.current, { opacity: 0, y: 30 })
-
-    const tl = gsap.timeline({ delay: 3 })
+    const tl = gsap.timeline()
 
     tl.to(nameRef.current,
       { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
@@ -47,20 +47,7 @@ export default function Home() {
     tl.eventCallback('onComplete', () => {
       console.log('[Home] ✅ Entrance animation completed successfully')
     })
-
-    // ── Safety fallback: if GSAP animation never fires, force-show content ──
-    const safetyTimer = setTimeout(() => {
-      if (nameRef.current && parseFloat(getComputedStyle(nameRef.current).opacity) < 0.1) {
-        console.warn('[Home] ⚠️ Safety timeout hit (8s) — forcing content visible')
-        tl.kill()
-        gsap.set(elements, { opacity: 1, y: 0 })
-      }
-    }, 8000)
-
-    return () => {
-      clearTimeout(safetyTimer)
-    }
-  }, [])
+  }, { dependencies: [preloaderDone], scope: containerRef })
 
   // Rotate subtitle every 3 seconds
   useEffect(() => {
@@ -71,7 +58,7 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="home">
+    <main className="home" ref={containerRef}>
       <div className="home__content">
         <h1 ref={nameRef} className="home__name">
           Tomás Leote Falcão

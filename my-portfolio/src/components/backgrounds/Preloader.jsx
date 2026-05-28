@@ -17,6 +17,8 @@ export default function Preloader({ onComplete }) {
       console.log('[Preloader] Completing — hiding overlay and calling onComplete')
       setShow(false)
       onComplete?.()
+      // Force a resize event to wake up the R3F Canvas and fix initial black screen bugs
+      setTimeout(() => window.dispatchEvent(new Event('resize')), 50)
     }
 
     const tl = gsap.timeline({ onComplete: finish })
