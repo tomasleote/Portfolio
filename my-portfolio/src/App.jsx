@@ -32,6 +32,10 @@ function App() {
       {/* Background Layer: Kept mounted to prevent WebGL Context Loss, hidden when not on Home */}
       <div 
         style={{
+          position: 'fixed',
+          inset: 0,
+          pointerEvents: 'none',
+          zIndex: 0,
           opacity: location.pathname === '/' ? 1 : 0,
           visibility: location.pathname === '/' ? 'visible' : 'hidden',
           transition: 'opacity 0.6s ease, visibility 0.6s'

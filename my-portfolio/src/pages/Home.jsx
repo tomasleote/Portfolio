@@ -13,36 +13,27 @@ export default function Home({ preloaderDone }) {
   const subtitleRef = useRef(null)
   const linksRef = useRef([])
 
-  // Ensure elements start hidden instantly on mount
+  // Single useGSAP hook to manage both the initial hidden state and the entrance animation
   useGSAP(() => {
+    // 1. Force elements to be hidden immediately
     gsap.set([nameRef.current, subtitleRef.current, ...linksRef.current], { opacity: 0, y: 40 })
-  }, { scope: containerRef })
 
-  // Trigger entrance animation only when preloader is finished
-  useGSAP(() => {
+    // 2. Only start the animation if preloader is finished
     if (!preloaderDone) return
 
     console.log('[Home] Preloader done — starting entrance animation')
 
-    // Cancel the CSS fallback animations so GSAP can take over cleanly
+    // 3. Disable CSS fallback animation so it doesn't conflict
     const elements = [nameRef.current, subtitleRef.current, ...linksRef.current].filter(Boolean)
     elements.forEach(el => {
       if (el) el.style.animation = 'none'
     })
 
+    // 4. Run the entrance timeline
     const tl = gsap.timeline()
-
-    tl.to(nameRef.current,
-      { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
-    )
-    .to(subtitleRef.current,
-      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' },
-      '-=0.5'
-    )
-    .to(linksRef.current,
-      { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', stagger: 0.12 },
-      '-=0.4'
-    )
+    tl.to(nameRef.current, { y: 0, opacity: 1, duration: 1, ease: 'power3.out' })
+      .to(subtitleRef.current, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, '-=0.5')
+      .to(linksRef.current, { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', stagger: 0.12 }, '-=0.4')
 
     tl.eventCallback('onComplete', () => {
       console.log('[Home] ✅ Entrance animation completed successfully')
