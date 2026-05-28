@@ -1,9 +1,33 @@
-import React, { useMemo, useRef, useEffect } from 'react'
+import React, { Component, useMemo, useRef, useEffect } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import * as THREE from 'three'
 import StreamParticleMaterial from './ParticleMaterial'
 import { useMediaQuery } from '../../../hooks/useMediaQuery'
+
+// ─── Error Boundary for WebGL ───────────────────────────────────────────────────
+class CanvasErrorBoundary extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { hasError: false, error: null }
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error }
+  }
+
+  componentDidCatch(error, info) {
+    console.error('[CanvasErrorBoundary] WebGL Canvas crashed:', error, info)
+  }
+
+  render() {
+    if (this.state.hasError) {
+      console.warn('[CanvasErrorBoundary] Rendering fallback (transparent div)')
+      return <div style={{ position: 'fixed', inset: 0, zIndex: 0 }} />
+    }
+    return this.props.children
+  }
+}
 
 // ─── Helpers ────────────────────────────────────────────────────────────────────
 const rand  = (min, max) => min + Math.random() * (max - min)
@@ -17,8 +41,11 @@ function ParticleStream({ isMobile }) {
   const mouseWorld   = useRef(new THREE.Vector3(0, 100, 0)) // off-screen initially
   const { camera }   = useThree()
 
+  console.log(`[ParticleStream] Initializing with ${PARTICLE_COUNT} particles (mobile: ${isMobile})`)
+
   // ── Generate all particle attributes ──────────────────────────────────────
   const buffers = useMemo(() => {
+    console.log('[ParticleStream] Generating particle buffers...')
     const offset    = new Float32Array(PARTICLE_COUNT)
     const startPos  = new Float32Array(PARTICLE_COUNT * 3)
     const control1  = new Float32Array(PARTICLE_COUNT * 3)
@@ -68,6 +95,7 @@ function ParticleStream({ isMobile }) {
       colors[i3 + 2] = b
     }
 
+    console.log('[ParticleStream] Buffers generated successfully')
     return { offset, startPos, control1, control2, endPos, sizes, colors, speeds }
   }, [])
 
@@ -134,6 +162,8 @@ function ParticleStream({ isMobile }) {
 export default function InteractiveParticlesBackground() {
   const isMobile = useMediaQuery('(max-width: 768px)')
 
+  console.log('[InteractiveParticlesBackground] Rendering Canvas wrapper (mobile:', isMobile, ')')
+
   return (
     <div style={{
       position: 'fixed',
@@ -142,21 +172,15 @@ export default function InteractiveParticlesBackground() {
       zIndex: 0,
       pointerEvents: 'none',
     }}>
-      <Canvas
-        camera={{ position: [0, 0, 10], fov: 60 }}
-        dpr={isMobile ? Math.min(window.devicePixelRatio, 1.5) : 1}
-        gl={{ antialias: false, powerPreference: 'high-performance' }}
-      >
-        <ParticleStream isMobile={isMobile} />
-        {/* <EffectComposer disableNormalPass>
-          <Bloom 
-            intensity={0.2} 
-            luminanceThreshold={0.0} 
-            luminanceSmoothing={0.00} 
-            mipmapBlur 
-          />
-        </EffectComposer>*/}
-      </Canvas>
+      <CanvasErrorBoundary>
+        <Canvas
+          camera={{ position: [0, 0, 10], fov: 60 }}
+          dpr={isMobile ? Math.min(window.devicePixelRatio, 1.5) : 1}
+          gl={{ antialias: false, powerPreference: 'high-performance' }}
+        >
+          <ParticleStream isMobile={isMobile} />
+        </Canvas>
+      </CanvasErrorBoundary>
     </div>
   )
 }

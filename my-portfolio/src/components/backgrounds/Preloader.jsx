@@ -6,14 +6,20 @@ export default function Preloader({ onComplete }) {
   const overlayRef = useRef(null)
   const textRef = useRef(null)
   const [show, setShow] = useState(true)
+  const completedRef = useRef(false)
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      onComplete: () => {
-        setShow(false)
-        onComplete?.()
-      }
-    })
+    console.log('[Preloader] Mounted, starting GSAP timeline')
+
+    const finish = () => {
+      if (completedRef.current) return // prevent double-fire
+      completedRef.current = true
+      console.log('[Preloader] Completing — hiding overlay and calling onComplete')
+      setShow(false)
+      onComplete?.()
+    }
+
+    const tl = gsap.timeline({ onComplete: finish })
 
     // Text pulse animation while loading
     tl.fromTo(textRef.current,
@@ -30,6 +36,20 @@ export default function Preloader({ onComplete }) {
       duration: 0.8,
       ease: 'power4.inOut'
     })
+
+    // ── Safety timeout: force-complete if GSAP timeline never finishes ──
+    const safetyTimer = setTimeout(() => {
+      if (!completedRef.current) {
+        console.warn('[Preloader] ⚠️ Safety timeout hit (5s) — force-completing preloader')
+        tl.kill()
+        finish()
+      }
+    }, 5000)
+
+    return () => {
+      clearTimeout(safetyTimer)
+      tl.kill()
+    }
   }, [])
 
   if (!show) return null

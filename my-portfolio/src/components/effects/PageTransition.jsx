@@ -12,8 +12,15 @@ export default function PageTransition({ children }) {
     // Skip animation on first render (preloader handles that)
     if (isFirstRender.current) {
       isFirstRender.current = false
+      console.log('[PageTransition] First render — skipping transition, ensuring content visible')
+      // Explicitly set content visible on first load
+      if (contentRef.current) {
+        gsap.set(contentRef.current, { opacity: 1, y: 0 })
+      }
       return
     }
+
+    console.log('[PageTransition] Navigating to:', location.pathname)
 
     const tl = gsap.timeline()
 

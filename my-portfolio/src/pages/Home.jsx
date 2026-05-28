@@ -17,7 +17,9 @@ export default function Home() {
     if (hasAnimated.current) return
     hasAnimated.current = true
 
-    const tl = gsap.timeline({ delay: 2.5 }) // delay accounts for preloader
+    console.log('[Home] Starting entrance animation (3s delay)')
+
+    const tl = gsap.timeline({ delay: 3 }) // delay accounts for preloader
 
     tl.fromTo(nameRef.current,
       { y: 60, opacity: 0 },
@@ -33,6 +35,22 @@ export default function Home() {
       { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', stagger: 0.12 },
       '-=0.4'
     )
+
+    // ── Safety fallback: if GSAP animation never fires, force-show content ──
+    const safetyTimer = setTimeout(() => {
+      if (nameRef.current && parseFloat(getComputedStyle(nameRef.current).opacity) < 0.1) {
+        console.warn('[Home] ⚠️ Safety timeout hit (8s) — forcing content visible')
+        tl.kill()
+        gsap.set([nameRef.current, subtitleRef.current, ...linksRef.current], {
+          opacity: 1, y: 0
+        })
+      }
+    }, 8000)
+
+    return () => {
+      clearTimeout(safetyTimer)
+      tl.kill()
+    }
   }, [])
 
   // Rotate subtitle every 3 seconds

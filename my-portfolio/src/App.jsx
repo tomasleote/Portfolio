@@ -19,6 +19,8 @@ function App() {
   const [preloaderDone, setPreloaderDone] = useState(false)
   const location = useLocation()
 
+  console.log(`[App] Render — path: "${location.pathname}", preloaderDone: ${preloaderDone}`)
+
   return (
     <SmoothScroll>
       {/* Background Layer: Only shown on Home page */}
