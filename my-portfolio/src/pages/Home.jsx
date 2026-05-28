@@ -19,37 +19,46 @@ export default function Home() {
 
     console.log('[Home] Starting entrance animation (3s delay)')
 
-    const tl = gsap.timeline({ delay: 3 }) // delay accounts for preloader
+    // Cancel the CSS fallback animations so GSAP can take over cleanly
+    const elements = [nameRef.current, subtitleRef.current, ...linksRef.current].filter(Boolean)
+    elements.forEach(el => {
+      if (el) el.style.animation = 'none'
+    })
 
-    tl.fromTo(nameRef.current,
-      { y: 60, opacity: 0 },
+    // Set initial hidden state via GSAP (replaces CSS animation start)
+    gsap.set(nameRef.current, { opacity: 0, y: 60 })
+    gsap.set(subtitleRef.current, { opacity: 0, y: 40 })
+    gsap.set(linksRef.current, { opacity: 0, y: 30 })
+
+    const tl = gsap.timeline({ delay: 3 })
+
+    tl.to(nameRef.current,
       { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
     )
-    .fromTo(subtitleRef.current,
-      { y: 40, opacity: 0 },
+    .to(subtitleRef.current,
       { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' },
       '-=0.5'
     )
-    .fromTo(linksRef.current,
-      { y: 30, opacity: 0 },
+    .to(linksRef.current,
       { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', stagger: 0.12 },
       '-=0.4'
     )
+
+    tl.eventCallback('onComplete', () => {
+      console.log('[Home] ✅ Entrance animation completed successfully')
+    })
 
     // ── Safety fallback: if GSAP animation never fires, force-show content ──
     const safetyTimer = setTimeout(() => {
       if (nameRef.current && parseFloat(getComputedStyle(nameRef.current).opacity) < 0.1) {
         console.warn('[Home] ⚠️ Safety timeout hit (8s) — forcing content visible')
         tl.kill()
-        gsap.set([nameRef.current, subtitleRef.current, ...linksRef.current], {
-          opacity: 1, y: 0
-        })
+        gsap.set(elements, { opacity: 1, y: 0 })
       }
     }, 8000)
 
     return () => {
       clearTimeout(safetyTimer)
-      tl.kill()
     }
   }, [])
 
@@ -67,7 +76,7 @@ export default function Home() {
         <h1 ref={nameRef} className="home__name">
           Tomás Leote Falcão
         </h1>
-        <p ref={subtitleRef} key={titleIndex} className="home__subtitle">
+        <p ref={subtitleRef} className="home__subtitle">
           {TITLES[titleIndex]}
         </p>
         <nav className="home__links">

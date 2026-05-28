@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import SmoothScroll from './components/layout/SmoothScroll'
 import Navbar from './components/layout/Navbar'
@@ -21,10 +21,16 @@ function App() {
 
   console.log(`[App] Render — path: "${location.pathname}", preloaderDone: ${preloaderDone}`)
 
+  // Memoize the particle background so it never gets destroyed by parent re-renders
+  const particleBackground = useMemo(() => {
+    console.log('[App] Creating particle background (memoized)')
+    return <InteractiveParticlesBackground />
+  }, [])
+
   return (
     <SmoothScroll>
       {/* Background Layer: Only shown on Home page */}
-      {location.pathname === '/' && <InteractiveParticlesBackground />}
+      {location.pathname === '/' && particleBackground}
 
       {/* All page content at zIndex:1 — renders above the particle canvas */}
       <div style={{ position: 'relative', zIndex: 1 }}>

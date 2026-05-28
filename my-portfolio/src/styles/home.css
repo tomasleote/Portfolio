@@ -19,6 +19,8 @@
   line-height: 1.05;
   letter-spacing: -0.03em;
   margin-bottom: var(--space-sm);
+  /* CSS-only fallback: content becomes visible even if GSAP fails */
+  animation: homeFallbackFadeIn 1s ease-out 3.5s both;
 }
 
 .home__subtitle {
@@ -27,11 +29,12 @@
   font-weight: 400;
   margin-bottom: var(--space-lg);
   min-height: 1.8em;
-  animation: subtitleFade 0.6s ease-out;
+  animation: homeFallbackFadeIn 0.8s ease-out 4s both;
 }
 
-@keyframes subtitleFade {
-  from { opacity: 0; transform: translateY(10px); }
+/* Removed the old subtitleFade — replaced by unified fallback */
+@keyframes homeFallbackFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -40,6 +43,7 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-sm);
+  animation: homeFallbackFadeIn 0.6s ease-out 4.3s both;
 }
 
 .home__link {
