@@ -29,8 +29,16 @@ function App() {
 
   return (
     <SmoothScroll>
-      {/* Background Layer: Only shown on Home page */}
-      {location.pathname === '/' && particleBackground}
+      {/* Background Layer: Kept mounted to prevent WebGL Context Loss, hidden when not on Home */}
+      <div 
+        style={{
+          opacity: location.pathname === '/' ? 1 : 0,
+          visibility: location.pathname === '/' ? 'visible' : 'hidden',
+          transition: 'opacity 0.6s ease, visibility 0.6s'
+        }}
+      >
+        {particleBackground}
+      </div>
 
       {/* All page content at zIndex:1 — renders above the particle canvas */}
       <div style={{ position: 'relative', zIndex: 1 }}>
