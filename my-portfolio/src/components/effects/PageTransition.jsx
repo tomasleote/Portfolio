@@ -56,7 +56,7 @@ export default function PageTransition({ children }) {
           backgroundColor: 'var(--color-bg)',
           zIndex: 98,
           transformOrigin: 'bottom center',
-          scaleY: 0,
+          transform: 'scaleY(0)',
           pointerEvents: 'none',
         }}
       />
