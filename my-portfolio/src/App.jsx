@@ -2,17 +2,13 @@ import { useState, useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useTheme } from './context/ThemeContext'
 import SmoothScroll from './components/layout/SmoothScroll'
-import Navbar from './components/layout/Navbar'
-import Menu from './components/layout/Menu'
-import Footer from './components/layout/Footer'
+import Layout from './components/layout/Layout'
 import InteractiveParticlesBackground from './components/backgrounds/InteractiveParticles/InteractiveParticles'
 import Preloader from './components/backgrounds/Preloader'
 import CustomCursor from './components/effects/CustomCursor'
-import PageTransition from './components/effects/PageTransition'
 import AppRoutes from './router/AppRoutes'
 
 function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [preloaderDone, setPreloaderDone] = useState(false)
   const location = useLocation()
   const { theme } = useTheme()
@@ -40,17 +36,9 @@ function App() {
       <div style={{ position: 'relative', zIndex: 1 }}>
         {!preloaderDone && <Preloader onComplete={() => setPreloaderDone(true)} />}
         <CustomCursor />
-        <Navbar
-          onMenuToggle={() => setIsMenuOpen((p) => !p)}
-          isMenuOpen={isMenuOpen}
-        />
-        <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
-
-        <PageTransition>
+        <Layout>
           <AppRoutes location={location} preloaderDone={preloaderDone} />
-        </PageTransition>
-
-        <Footer />
+        </Layout>
       </div>
     </SmoothScroll>
   )
