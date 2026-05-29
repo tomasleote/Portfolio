@@ -1,0 +1,55 @@
+[     202ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:5174/node_modules/.vite/deps/chunk-RA7LIH6N.js?v=3062c59f:17994
+[     256ms] [LOG] [InteractiveParticlesBackground] Rendering Canvas wrapper (mobile: false ) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:192
+[     257ms] [LOG] [InteractiveParticlesBackground] Rendering Canvas wrapper (mobile: false ) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:192
+[     355ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5174/node_modules/.vite/deps/chunk-PLBY54L2.js?v=3062c59f:746
+[     375ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[     375ms] [LOG] [ParticleStream] Generating particle buffers... @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:57
+[     384ms] [LOG] [ParticleStream] Buffers generated successfully @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:95
+[     385ms] [LOG] [ParticleStream] Generating particle buffers... @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:57
+[     392ms] [LOG] [ParticleStream] Buffers generated successfully @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:95
+[     392ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[     405ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[     406ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[    1428ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[    1429ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[    3602ms] [LOG] [Home] Preloader done — starting entrance animation @ http://localhost:5174/src/pages/Home.jsx:33
+[    5349ms] [LOG] [Home] ✅ Entrance animation completed successfully @ http://localhost:5174/src/pages/Home.jsx:41
+[   16542ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[   16543ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[   16646ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[   16647ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[  152460ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:5174/node_modules/.vite/deps/chunk-RA7LIH6N.js?v=3062c59f:17994
+[  152492ms] [LOG] [InteractiveParticlesBackground] Rendering Canvas wrapper (mobile: false ) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:192
+[  152493ms] [LOG] [InteractiveParticlesBackground] Rendering Canvas wrapper (mobile: false ) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:192
+[  152727ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5174/node_modules/.vite/deps/chunk-PLBY54L2.js?v=3062c59f:746
+[  152787ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[  152787ms] [LOG] [ParticleStream] Generating particle buffers... @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:57
+[  152795ms] [LOG] [ParticleStream] Buffers generated successfully @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:95
+[  152795ms] [LOG] [ParticleStream] Generating particle buffers... @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:57
+[  152800ms] [LOG] [ParticleStream] Buffers generated successfully @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:95
+[  152800ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[  152834ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[  152834ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[  353054ms] [LOG] [Home] Preloader done — starting entrance animation @ http://localhost:5174/src/pages/Home.jsx?t=1780015593282:34
+[  353064ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[  353065ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[  353071ms] [LOG] [Home] Preloader done — starting entrance animation @ http://localhost:5174/src/pages/Home.jsx?t=1780015593282:34
+[  354179ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[  354179ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[  354807ms] [LOG] [Home] ✅ Entrance animation completed successfully @ http://localhost:5174/src/pages/Home.jsx?t=1780015593282:42
+[  434008ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:5174/node_modules/.vite/deps/chunk-RA7LIH6N.js?v=3062c59f:17994
+[  434038ms] [LOG] [InteractiveParticlesBackground] Rendering Canvas wrapper (mobile: false ) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:192
+[  434038ms] [LOG] [InteractiveParticlesBackground] Rendering Canvas wrapper (mobile: false ) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:192
+[  434132ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://localhost:5174/node_modules/.vite/deps/chunk-PLBY54L2.js?v=3062c59f:746
+[  434156ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[  434156ms] [LOG] [ParticleStream] Generating particle buffers... @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:57
+[  434160ms] [LOG] [ParticleStream] Buffers generated successfully @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:95
+[  434160ms] [LOG] [ParticleStream] Generating particle buffers... @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:57
+[  434164ms] [LOG] [ParticleStream] Buffers generated successfully @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:95
+[  434165ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[  434167ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[  434168ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[  435215ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[  435216ms] [LOG] [ParticleStream] Initializing with 20000 particles (mobile: false) @ http://localhost:5174/src/components/backgrounds/InteractiveParticles/InteractiveParticles.jsx:55
+[  437382ms] [LOG] [Home] Preloader done — starting entrance animation @ http://localhost:5174/src/pages/Home.jsx?t=1780015793912:34
+[  439118ms] [LOG] [Home] ✅ Entrance animation completed successfully @ http://localhost:5174/src/pages/Home.jsx?t=1780015793912:42
