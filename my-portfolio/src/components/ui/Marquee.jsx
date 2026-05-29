@@ -21,8 +21,8 @@ export default function Marquee() {
   useGSAP(() => {
     gsap.fromTo(
       trackRef.current,
-      { xPercent: 0 },
-      { xPercent: -50, duration: 25, ease: 'none', repeat: -1 }
+      { xPercent: -50 },
+      { xPercent: 0, duration: 25, ease: 'none', repeat: -1 }
     )
   }, { scope: trackRef })
 
