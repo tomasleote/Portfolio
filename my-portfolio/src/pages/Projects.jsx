@@ -1,5 +1,6 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 import { projects } from '../data/projects'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 import ProjectRow from '../components/ui/ProjectRow'
@@ -16,26 +17,15 @@ export default function Projects() {
   const imageRef = useRef(null)
   const isMobile = useMediaQuery('(max-width: 768px)')
 
-  // Animate image/video in/out
-  useEffect(() => {
+  useGSAP(() => {
     if (!imageRef.current || isMobile) return
 
     if (hoveredIndex !== null && (projects[hoveredIndex]?.imageUrl || projects[hoveredIndex]?.videoUrl)) {
-      gsap.to(imageRef.current, {
-        opacity: 1,
-        scale: 1,
-        duration: 0.5,
-        ease: 'power3.out',
-      })
+      gsap.to(imageRef.current, { opacity: 1, scale: 1, duration: 0.5, ease: 'power3.out' })
     } else {
-      gsap.to(imageRef.current, {
-        opacity: 0,
-        scale: 0.95,
-        duration: 0.3,
-        ease: 'power2.in',
-      })
+      gsap.to(imageRef.current, { opacity: 0, scale: 0.95, duration: 0.3, ease: 'power2.in' })
     }
-  }, [hoveredIndex, isMobile])
+  }, { dependencies: [hoveredIndex, isMobile], scope: imageRef })
 
   const currentProject = hoveredIndex !== null ? projects[hoveredIndex] : null
 

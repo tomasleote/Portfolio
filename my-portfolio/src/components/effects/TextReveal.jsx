@@ -1,6 +1,7 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
 import '../../styles/textReveal.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -15,16 +16,9 @@ export default function TextReveal({
 }) {
   const ref = useRef(null)
 
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-
-    gsap.fromTo(el,
-      {
-        y,
-        opacity: 0,
-        clipPath: 'inset(0 0 100% 0)',
-      },
+  useGSAP(() => {
+    gsap.fromTo(ref.current,
+      { y, opacity: 0, clipPath: 'inset(0 0 100% 0)' },
       {
         y: 0,
         opacity: 1,
@@ -33,19 +27,13 @@ export default function TextReveal({
         delay,
         ease: 'power3.out',
         scrollTrigger: {
-          trigger: el,
+          trigger: ref.current,
           start: 'top 88%',
           toggleActions: 'play none none none',
         },
       }
     )
-
-    return () => {
-      ScrollTrigger.getAll().forEach(t => {
-        if (t.trigger === el) t.kill()
-      })
-    }
-  }, [delay, duration, y])
+  }, { dependencies: [delay, duration, y], scope: ref })
 
   return (
     <Tag ref={ref} className={`text-reveal ${className}`}>

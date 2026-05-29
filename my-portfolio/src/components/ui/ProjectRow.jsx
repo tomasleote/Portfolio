@@ -1,5 +1,6 @@
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 import '../../styles/projectRow.css'
 
 export default function ProjectRow({
@@ -14,28 +15,19 @@ export default function ProjectRow({
   onHover,
   index,
 }) {
+  const rootRef = useRef(null)
   const detailsRef = useRef(null)
   const arrowRef = useRef(null)
 
-  useEffect(() => {
+  useGSAP(() => {
     if (isExpanded) {
-      gsap.to(detailsRef.current, {
-        height: 'auto',
-        opacity: 1,
-        duration: 0.5,
-        ease: 'power3.out',
-      })
+      gsap.to(detailsRef.current, { height: 'auto', opacity: 1, duration: 0.5, ease: 'power3.out' })
       gsap.to(arrowRef.current, { rotation: 45, duration: 0.3 })
     } else {
-      gsap.to(detailsRef.current, {
-        height: 0,
-        opacity: 0,
-        duration: 0.4,
-        ease: 'power3.inOut',
-      })
+      gsap.to(detailsRef.current, { height: 0, opacity: 0, duration: 0.4, ease: 'power3.inOut' })
       gsap.to(arrowRef.current, { rotation: 0, duration: 0.3 })
     }
-  }, [isExpanded])
+  }, { dependencies: [isExpanded], scope: rootRef })
 
   const handleClick = () => {
     if (url) window.open(url, '_blank', 'noopener,noreferrer')
@@ -48,6 +40,7 @@ export default function ProjectRow({
 
   return (
     <div
+      ref={rootRef}
       className={`project-row ${isExpanded ? 'project-row--expanded' : ''}`}
       onMouseEnter={onHover}
       onClick={handleClick}
@@ -61,10 +54,10 @@ export default function ProjectRow({
 
       <div ref={detailsRef} className="project-row__details">
         <p className="project-row__description">{description}</p>
-        
+
         {documentUrl && (
-          <button 
-            className="project-row__doc-btn" 
+          <button
+            className="project-row__doc-btn"
             onClick={handleDocClick}
             data-cursor
           >
