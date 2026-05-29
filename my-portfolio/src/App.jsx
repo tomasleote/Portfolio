@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { useTheme } from './context/ThemeContext'
 import SmoothScroll from './components/layout/SmoothScroll'
 import Navbar from './components/layout/Navbar'
@@ -9,11 +9,7 @@ import InteractiveParticlesBackground from './components/backgrounds/Interactive
 import Preloader from './components/backgrounds/Preloader'
 import CustomCursor from './components/effects/CustomCursor'
 import PageTransition from './components/effects/PageTransition'
-import Home from './pages/Home'
-import About from './pages/About'
-import Experience from './pages/Experience'
-import Projects from './pages/Projects'
-import Contact from './pages/Contact'
+import AppRoutes from './router/AppRoutes'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -51,13 +47,7 @@ function App() {
         <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 
         <PageTransition>
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<Home preloaderDone={preloaderDone} />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/experience" element={<Experience />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
+          <AppRoutes location={location} preloaderDone={preloaderDone} />
         </PageTransition>
 
         <Footer />
