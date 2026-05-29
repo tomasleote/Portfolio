@@ -1,57 +1,45 @@
 import { useState, useEffect, useRef } from 'react'
 import AnimatedLink from '../components/ui/AnimatedLink'
+import Marquee from '../components/ui/Marquee'
 import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 import '../styles/home.css'
 
 const TITLES = ['Software Engineer', 'Full-Stack Everything', 'Bedroom DJ']
 
-export default function Home() {
+export default function Home({ preloaderDone }) {
   const [titleIndex, setTitleIndex] = useState(0)
+  const containerRef = useRef(null)
   const nameRef = useRef(null)
   const subtitleRef = useRef(null)
   const linksRef = useRef([])
-  const hasAnimated = useRef(false)
 
-  // Entrance animation (once)
-  useEffect(() => {
-    if (hasAnimated.current) return
-    hasAnimated.current = true
+  // Single useGSAP hook to manage both the initial hidden state and the entrance animation
+  useGSAP(() => {
+    // 1. Force elements to be hidden immediately
+    gsap.set([nameRef.current, subtitleRef.current, ...linksRef.current], { opacity: 0, y: 40 })
 
-    console.log('[Home] Starting entrance animation (3s delay)')
+    // 2. Only start the animation if preloader is finished
+    if (!preloaderDone) return
 
-    const tl = gsap.timeline({ delay: 3 }) // delay accounts for preloader
+    console.log('[Home] Preloader done — starting entrance animation')
 
-    tl.fromTo(nameRef.current,
-      { y: 60, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
-    )
-    .fromTo(subtitleRef.current,
-      { y: 40, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' },
-      '-=0.5'
-    )
-    .fromTo(linksRef.current,
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', stagger: 0.12 },
-      '-=0.4'
-    )
+    // 3. Disable CSS fallback animation so it doesn't conflict
+    const elements = [nameRef.current, subtitleRef.current, ...linksRef.current].filter(Boolean)
+    elements.forEach(el => {
+      if (el) el.style.animation = 'none'
+    })
 
-    // ── Safety fallback: if GSAP animation never fires, force-show content ──
-    const safetyTimer = setTimeout(() => {
-      if (nameRef.current && parseFloat(getComputedStyle(nameRef.current).opacity) < 0.1) {
-        console.warn('[Home] ⚠️ Safety timeout hit (8s) — forcing content visible')
-        tl.kill()
-        gsap.set([nameRef.current, subtitleRef.current, ...linksRef.current], {
-          opacity: 1, y: 0
-        })
-      }
-    }, 8000)
+    // 4. Run the entrance timeline
+    const tl = gsap.timeline()
+    tl.to(nameRef.current, { y: 0, opacity: 1, duration: 1, ease: 'power3.out' })
+      .to(subtitleRef.current, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, '-=0.5')
+      .to(linksRef.current, { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', stagger: 0.12 }, '-=0.4')
 
-    return () => {
-      clearTimeout(safetyTimer)
-      tl.kill()
-    }
-  }, [])
+    tl.eventCallback('onComplete', () => {
+      console.log('[Home] ✅ Entrance animation completed successfully')
+    })
+  }, { dependencies: [preloaderDone], scope: containerRef })
 
   // Rotate subtitle every 3 seconds
   useEffect(() => {
@@ -62,12 +50,12 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="home">
+    <main className="home" ref={containerRef}>
       <div className="home__content">
         <h1 ref={nameRef} className="home__name">
           Tomás Leote Falcão
         </h1>
-        <p ref={subtitleRef} key={titleIndex} className="home__subtitle">
+        <p ref={subtitleRef} className="home__subtitle">
           {TITLES[titleIndex]}
         </p>
         <nav className="home__links">
@@ -81,6 +69,9 @@ export default function Home() {
             → Experience
           </AnimatedLink>
         </nav>
+      </div>
+      <div className="home__marquee">
+        <Marquee />
       </div>
     </main>
   )

@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 import '../../styles/preloader.css'
 
 export default function Preloader({ onComplete }) {
@@ -8,49 +9,34 @@ export default function Preloader({ onComplete }) {
   const [show, setShow] = useState(true)
   const completedRef = useRef(false)
 
-  useEffect(() => {
-    console.log('[Preloader] Mounted, starting GSAP timeline')
-
+  useGSAP(() => {
     const finish = () => {
-      if (completedRef.current) return // prevent double-fire
+      if (completedRef.current) return
       completedRef.current = true
-      console.log('[Preloader] Completing — hiding overlay and calling onComplete')
       setShow(false)
       onComplete?.()
+      // Wake up the R3F canvas so the initial frame paints.
+      gsap.delayedCall(0.05, () => window.dispatchEvent(new Event('resize')))
     }
 
     const tl = gsap.timeline({ onComplete: finish })
-
-    // Text pulse animation while loading
     tl.fromTo(textRef.current,
       { opacity: 0 },
       { opacity: 1, duration: 0.6, ease: 'power2.out' }
     )
-    // Wait a minimum time for WebGL to init
-    .to({}, { duration: 1.5 })
-    // Fade out text
-    .to(textRef.current, { opacity: 0, y: -20, duration: 0.4, ease: 'power2.in' })
-    // Slide overlay up
-    .to(overlayRef.current, {
-      clipPath: 'inset(0 0 100% 0)',
-      duration: 0.8,
-      ease: 'power4.inOut'
+      .to({}, { duration: 1.5 })
+      .to(textRef.current, { opacity: 0, y: -20, duration: 0.4, ease: 'power2.in' })
+      .to(overlayRef.current, {
+        clipPath: 'inset(0 0 100% 0)',
+        duration: 0.8,
+        ease: 'power4.inOut'
+      })
+
+    // Safety fallback: force-complete if the timeline never finishes.
+    gsap.delayedCall(5, () => {
+      if (!completedRef.current) finish()
     })
-
-    // ── Safety timeout: force-complete if GSAP timeline never finishes ──
-    const safetyTimer = setTimeout(() => {
-      if (!completedRef.current) {
-        console.warn('[Preloader] ⚠️ Safety timeout hit (5s) — force-completing preloader')
-        tl.kill()
-        finish()
-      }
-    }, 5000)
-
-    return () => {
-      clearTimeout(safetyTimer)
-      tl.kill()
-    }
-  }, [])
+  }, { scope: overlayRef })
 
   if (!show) return null
 

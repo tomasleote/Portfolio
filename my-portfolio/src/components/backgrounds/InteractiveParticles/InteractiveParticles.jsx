@@ -34,7 +34,7 @@ const rand  = (min, max) => min + Math.random() * (max - min)
 
 const DURATION = 25.0        // Slower movement for a graceful stream
 
-function ParticleStream({ isMobile }) {
+function ParticleStream({ isMobile, theme }) {
   const PARTICLE_COUNT = isMobile ? 4000 : 20000
   const pointsRef   = useRef()
   const materialRef = useRef()
@@ -65,61 +65,55 @@ function ParticleStream({ isMobile }) {
       speeds[i] = rand(0.2, 1.4)
 
       // ── Bezier path design ─────────────────────────────────────────────────
-      // Start: Top-left area (blue circle)
       startPos[i3]     = rand(-13, -9)
       startPos[i3 + 1] = rand(3, 7)
       startPos[i3 + 2] = rand(-3, 1)
 
-      // Control point 1: Pulls strongly down to create the deep valley
       control1[i3]     = rand(-6, -2)
       control1[i3 + 1] = rand(-16, -10)
       control1[i3 + 2] = rand(-4, 4)
 
-      // Control point 2: Pulls strongly up to create the peak near the text
       control2[i3]     = rand(2, 6)
       control2[i3 + 1] = rand(6, 12)
       control2[i3 + 2] = rand(-2, 0)
 
-      // End: Middle-right / lower-middle area
       endPos[i3]     = rand(9, 13)
       endPos[i3 + 1] = rand(-4, 0)
       endPos[i3 + 2] = rand(-3, 1)
 
-      // Size: small dots, subtle variation
-      sizes[i] = rand(0.15, 0.6)
+      // Size: Increase base size for better visibility
+      sizes[i] = rand(0.1, 0.8)
 
-      // Color: white with slight brightness variation for depth
-      const b = rand(0.55, 1.0)
-      colors[i3]     = b
-      colors[i3 + 1] = b
-      colors[i3 + 2] = b
+      // Color: Dark Ink in light mode, Bright White in dark mode
+      if (theme === 'light') {
+        const shade = rand(0.0, 0.05) // pure black to very dark grey
+        colors[i3]     = shade
+        colors[i3 + 1] = shade
+        colors[i3 + 2] = shade
+      } else {
+        const b = rand(0.1, 0.4) // increased brightness (was 0.55 - 1.0)
+        colors[i3]     = b
+        colors[i3 + 1] = b
+        colors[i3 + 2] = b
+      }
     }
 
     console.log('[ParticleStream] Buffers generated successfully')
     return { offset, startPos, control1, control2, endPos, sizes, colors, speeds }
-  }, [])
+  }, [theme]) // Re-generate buffers when theme changes
 
   // ── Track mouse position and project to world space ───────────────────────
   useEffect(() => {
     const handlePointerMove = (e) => {
-      // Convert screen coords to normalized device coordinates [-1, 1]
       const ndcX = (e.clientX / window.innerWidth)  * 2 - 1
       const ndcY = -(e.clientY / window.innerHeight) * 2 + 1
-
-      // Project onto the z=0 plane in world space
-      // Camera is at z=10 looking at origin, fov=60
       const halfH = Math.tan((60 * Math.PI / 180) / 2) * 10
       const halfW = halfH * (window.innerWidth / window.innerHeight)
 
-      mouseWorld.current.set(
-        ndcX * halfW,
-        ndcY * halfH,
-        0
-      )
+      mouseWorld.current.set(ndcX * halfW, ndcY * halfH, 0)
     }
 
     const handlePointerLeave = () => {
-      // Move mouse off-screen so repulsion stops
       mouseWorld.current.set(0, 100, 0)
     }
 
@@ -159,7 +153,7 @@ function ParticleStream({ isMobile }) {
 }
 
 // ─── Exported Background Component ──────────────────────────────────────────────
-export default function InteractiveParticlesBackground() {
+export default function InteractiveParticlesBackground({ theme }) {
   const isMobile = useMediaQuery('(max-width: 768px)')
 
   console.log('[InteractiveParticlesBackground] Rendering Canvas wrapper (mobile:', isMobile, ')')
@@ -178,7 +172,7 @@ export default function InteractiveParticlesBackground() {
           dpr={isMobile ? Math.min(window.devicePixelRatio, 1.5) : 1}
           gl={{ antialias: false, powerPreference: 'high-performance' }}
         >
-          <ParticleStream isMobile={isMobile} />
+          <ParticleStream isMobile={isMobile} theme={theme} />
         </Canvas>
       </CanvasErrorBoundary>
     </div>

@@ -1,46 +1,52 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 import { projects } from '../data/projects'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 import ProjectRow from '../components/ui/ProjectRow'
 import TextReveal from '../components/effects/TextReveal'
 import AnimatedLink from '../components/ui/AnimatedLink'
+import { social } from '../data/config'
+import ImageModal from '../components/ImageModal'
+import VideoModal from '../components/VideoModal'
 import '../styles/projects.css'
 
 export default function Projects() {
   const [hoveredIndex, setHoveredIndex] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const imageRef = useRef(null)
   const isMobile = useMediaQuery('(max-width: 768px)')
 
-  // Animate image/video in/out
-  useEffect(() => {
+  useGSAP(() => {
     if (!imageRef.current || isMobile) return
 
     if (hoveredIndex !== null && (projects[hoveredIndex]?.imageUrl || projects[hoveredIndex]?.videoUrl)) {
-      gsap.to(imageRef.current, {
-        opacity: 1,
-        scale: 1,
-        duration: 0.5,
-        ease: 'power3.out',
-      })
+      gsap.to(imageRef.current, { opacity: 1, scale: 1, duration: 0.5, ease: 'power3.out' })
     } else {
-      gsap.to(imageRef.current, {
-        opacity: 0,
-        scale: 0.95,
-        duration: 0.3,
-        ease: 'power2.in',
-      })
+      gsap.to(imageRef.current, { opacity: 0, scale: 0.95, duration: 0.3, ease: 'power2.in' })
     }
-  }, [hoveredIndex, isMobile])
+  }, { dependencies: [hoveredIndex, isMobile], scope: imageRef })
 
   const currentProject = hoveredIndex !== null ? projects[hoveredIndex] : null
+
+  const handleImageClick = () => {
+    if (currentProject) {
+      setIsModalOpen(true)
+    }
+  }
 
   return (
     <main className="projects-page" onMouseLeave={() => setHoveredIndex(null)}>
       {/* Floating image/video preview (desktop only) */}
       {!isMobile && (
         <div className="projects-page__image-col">
-          <div ref={imageRef} className="projects-page__image-wrapper">
+          <div 
+            ref={imageRef} 
+            className="projects-page__image-wrapper" 
+            onClick={handleImageClick}
+            style={{ cursor: 'pointer' }}
+            data-cursor
+          >
             {currentProject?.videoUrl ? (
               <video
                 src={currentProject.videoUrl}
@@ -90,7 +96,7 @@ export default function Projects() {
 
         <TextReveal className="projects-page__footer" delay={0.3}>
           <AnimatedLink
-            href="https://github.com/tomasleote"
+            href={social.github}
             target="_blank"
             rel="noopener noreferrer"
             className="projects-page__github-link"
@@ -99,6 +105,23 @@ export default function Projects() {
           </AnimatedLink>
         </TextReveal>
       </div>
+
+      {/* Fullscreen Modals */}
+      {currentProject?.videoUrl ? (
+        <VideoModal 
+          videoUrl={currentProject.videoUrl} 
+          title={currentProject.title} 
+          isOpen={isModalOpen} 
+          onClose={() => setIsModalOpen(false)} 
+        />
+      ) : currentProject?.imageUrl ? (
+        <ImageModal 
+          imageUrl={currentProject.imageUrl} 
+          title={currentProject.title} 
+          isOpen={isModalOpen} 
+          onClose={() => setIsModalOpen(false)} 
+        />
+      ) : null}
     </main>
   )
 }

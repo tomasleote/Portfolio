@@ -1,0 +1,57 @@
+- generic [ref=e6]:
+  - generic [ref=e8]: Loading...
+  - banner [ref=e9]:
+    - link "Tomás Leote Falcão" [ref=e10]:
+      - /url: /
+    - generic [ref=e11]:
+      - button "Toggle theme" [ref=e12]:
+        - img [ref=e13]
+      - button "Open menu" [ref=e19]: Menu
+  - navigation [ref=e20]:
+    - list [ref=e21]:
+      - listitem [ref=e22]:
+        - link [ref=e25]:
+          - /url: /
+          - generic [ref=e26]: "01"
+          - text: Home
+      - listitem [ref=e27]:
+        - link [ref=e30]:
+          - /url: /about
+          - generic [ref=e31]: "02"
+          - text: About
+      - listitem [ref=e32]:
+        - link [ref=e35]:
+          - /url: /experience
+          - generic [ref=e36]: "03"
+          - text: Experience
+      - listitem [ref=e37]:
+        - link [ref=e40]:
+          - /url: /projects
+          - generic [ref=e41]: "04"
+          - text: Projects
+      - listitem [ref=e42]:
+        - link [ref=e45]:
+          - /url: /contact
+          - generic [ref=e46]: "05"
+          - text: Contact
+  - main [ref=e48]:
+    - generic [ref=e49]:
+      - heading "Tomás Leote Falcão" [level=1] [ref=e50]
+      - paragraph [ref=e51]: Software Engineer
+      - navigation [ref=e52]:
+        - link "→ About Me" [ref=e53]:
+          - /url: /about
+        - link "→ Projects" [ref=e54]:
+          - /url: /projects
+        - link "→ Experience" [ref=e55]:
+          - /url: /experience
+  - contentinfo:
+    - generic [ref=e56]:
+      - button "LinkedIn" [ref=e59]:
+        - generic [ref=e60]: 
+      - button "GitHub" [ref=e63]:
+        - generic [ref=e64]: 
+      - button "Email" [ref=e67]:
+        - generic [ref=e68]: 
+      - button "Spotify" [ref=e71]:
+        - generic [ref=e72]: 

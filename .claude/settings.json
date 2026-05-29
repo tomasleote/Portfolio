@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git commit -m ' *)",
+      "Bash(git commit *)",
+      "Bash(git log *)",
+      "Bash(FILTER_BRANCH_SQUELCH_WARNING=1 git filter-branch -f --msg-filter 'perl -0pe \"s/\\\\n+Co-[Aa]uthored-[Bb]y:\\\\s*Claude[^\\\\n]*//g; s/\\\\s+\\\\z/\\\\n/\"' 36428f1..HEAD)",
+      "Bash(git stash *)",
+      "Bash(git update-ref *)",
+      "Bash(git push *)",
+      "Bash(gh auth *)"
+    ]
+  }
+}

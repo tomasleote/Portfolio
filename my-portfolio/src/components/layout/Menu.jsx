@@ -1,6 +1,7 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 import Magnet from '../effects/Magnet'
 import '../../styles/menu.css'
 
@@ -16,15 +17,13 @@ export default function Menu({ isOpen, onClose }) {
   const overlayRef = useRef(null)
   const linksRef = useRef([])
 
-  useEffect(() => {
+  useGSAP(() => {
     if (isOpen) {
-      // Animate overlay in
       gsap.to(overlayRef.current, {
         clipPath: 'inset(0 0 0% 0)',
         duration: 0.6,
         ease: 'power4.inOut',
       })
-      // Stagger links in
       gsap.fromTo(
         linksRef.current,
         { y: 80, opacity: 0 },
@@ -37,7 +36,7 @@ export default function Menu({ isOpen, onClose }) {
         ease: 'power4.inOut',
       })
     }
-  }, [isOpen])
+  }, { dependencies: [isOpen], scope: overlayRef })
 
   return (
     <nav ref={overlayRef} className="menu-overlay" aria-hidden={!isOpen}>

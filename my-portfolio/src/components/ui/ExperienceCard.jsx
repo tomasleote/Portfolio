@@ -1,6 +1,7 @@
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
 import '../../styles/ExperienceCard.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -10,11 +11,8 @@ export default function ExperienceCard({
 }) {
   const cardRef = useRef(null)
 
-  useEffect(() => {
-    const el = cardRef.current
-    if (!el) return
-
-    gsap.fromTo(el,
+  useGSAP(() => {
+    gsap.fromTo(cardRef.current,
       { y: 40, opacity: 0 },
       {
         y: 0, opacity: 1,
@@ -22,19 +20,13 @@ export default function ExperienceCard({
         ease: 'power3.out',
         delay: index * 0.1,
         scrollTrigger: {
-          trigger: el,
+          trigger: cardRef.current,
           start: 'top 90%',
           toggleActions: 'play none none none',
         }
       }
     )
-
-    return () => {
-      ScrollTrigger.getAll().forEach(t => {
-        if (t.trigger === el) t.kill()
-      })
-    }
-  }, [index])
+  }, { dependencies: [index], scope: cardRef })
 
   const handleClick = () => {
     if (companyUrl) window.open(companyUrl, '_blank', 'noopener,noreferrer')

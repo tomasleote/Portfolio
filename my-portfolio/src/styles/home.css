@@ -15,10 +15,12 @@
 .home__name {
   font-size: var(--fs-hero);
   font-weight: 700;
-  color: var(--color-white);
+  color: var(--color-text-primary);
   line-height: 1.05;
   letter-spacing: -0.03em;
   margin-bottom: var(--space-sm);
+  /* CSS-only fallback without excessive delay */
+  animation: homeFallbackFadeIn 1s ease-out both;
 }
 
 .home__subtitle {
@@ -27,11 +29,12 @@
   font-weight: 400;
   margin-bottom: var(--space-lg);
   min-height: 1.8em;
-  animation: subtitleFade 0.6s ease-out;
+  animation: homeFallbackFadeIn 0.8s ease-out 0.2s both;
 }
 
-@keyframes subtitleFade {
-  from { opacity: 0; transform: translateY(10px); }
+/* Removed the old subtitleFade — replaced by unified fallback */
+@keyframes homeFallbackFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -40,6 +43,7 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-sm);
+  animation: homeFallbackFadeIn 0.6s ease-out 0.4s both;
 }
 
 .home__link {
@@ -62,5 +66,23 @@
   }
   .home__subtitle {
     font-size: var(--fs-base);
+  }
+}
+
+.home {
+  position: relative;
+  flex-direction: column;
+}
+
+.home__marquee {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--footer-height) + var(--space-md));
+}
+
+@media (max-width: 768px) {
+  .home__marquee {
+    bottom: calc(var(--footer-height) + var(--space-sm));
   }
 }

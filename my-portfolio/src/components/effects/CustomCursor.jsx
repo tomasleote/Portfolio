@@ -1,5 +1,6 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
 import '../../styles/cursor.css'
 
@@ -8,33 +9,30 @@ export default function CustomCursor() {
   const followerRef = useRef(null)
   const isTouch = useMediaQuery('(hover: none)')
 
-  useEffect(() => {
+  useGSAP((context, contextSafe) => {
     if (isTouch) return
 
     const dot = dotRef.current
     const follower = followerRef.current
     if (!dot || !follower) return
 
-    // Move cursor elements
-    const onMouseMove = (e) => {
+    const onMouseMove = contextSafe((e) => {
       gsap.to(dot, { x: e.clientX, y: e.clientY, duration: 0.1, ease: 'power2.out' })
       gsap.to(follower, { x: e.clientX, y: e.clientY, duration: 0.35, ease: 'power2.out' })
-    }
+    })
 
-    // Scale up on interactive elements
-    const onEnter = () => {
+    const onEnter = contextSafe(() => {
       gsap.to(follower, { scale: 2.5, opacity: 0.6, duration: 0.3, ease: 'power2.out' })
       gsap.to(dot, { scale: 0, duration: 0.3 })
-    }
+    })
 
-    const onLeave = () => {
+    const onLeave = contextSafe(() => {
       gsap.to(follower, { scale: 1, opacity: 1, duration: 0.3, ease: 'power2.out' })
       gsap.to(dot, { scale: 1, duration: 0.3 })
-    }
+    })
 
     window.addEventListener('mousemove', onMouseMove)
 
-    // Use MutationObserver to attach hover listeners to dynamic elements
     const attachListeners = () => {
       document.querySelectorAll('a, button, [data-cursor]').forEach((el) => {
         el.removeEventListener('mouseenter', onEnter)
@@ -50,9 +48,13 @@ export default function CustomCursor() {
 
     return () => {
       window.removeEventListener('mousemove', onMouseMove)
+      document.querySelectorAll('a, button, [data-cursor]').forEach((el) => {
+        el.removeEventListener('mouseenter', onEnter)
+        el.removeEventListener('mouseleave', onLeave)
+      })
       observer.disconnect()
     }
-  }, [isTouch])
+  }, { dependencies: [isTouch] })
 
   if (isTouch) return null
 

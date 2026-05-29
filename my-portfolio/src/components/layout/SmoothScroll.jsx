@@ -21,6 +21,14 @@ export default function SmoothScroll({ children }) {
     // Sync Lenis scroll position with GSAP ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update)
 
+    // Recompute trigger positions now that Lenis is wired, and again once
+    // async content (fonts, PDF iframes) has finished loading — otherwise
+    // below-the-fold reveals can be measured against a stale layout and
+    // never fire (e.g. the Certifications section).
+    ScrollTrigger.refresh()
+    const refreshOnLoad = () => ScrollTrigger.refresh()
+    window.addEventListener('load', refreshOnLoad)
+
     // Use GSAP ticker for Lenis RAF loop (more efficient than separate rAF)
     const tickerCallback = (time) => {
       lenis.raf(time * 1000)
@@ -29,6 +37,7 @@ export default function SmoothScroll({ children }) {
     gsap.ticker.lagSmoothing(0)
 
     return () => {
+      window.removeEventListener('load', refreshOnLoad)
       gsap.ticker.remove(tickerCallback)
       lenis.destroy()
     }

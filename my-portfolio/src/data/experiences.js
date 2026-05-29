@@ -1,7 +1,3 @@
-import cvFile from '../assets/CV_TomasLeote_Lisboa_2026.pdf'
-
-export const cvUrl = cvFile
-
 export const experiences = [
   {
     timeframe: "Jan 2026 — Present",

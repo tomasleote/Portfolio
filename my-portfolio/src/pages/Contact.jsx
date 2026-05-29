@@ -1,24 +1,7 @@
 import TextReveal from '../components/effects/TextReveal'
 import '../styles/contact.css'
 import AnimatedLink from '../components/ui/AnimatedLink'
-
-const CONTACT_LINKS = [
-  {
-    label: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/tom%C3%A1s-leote-falc%C3%A3o-a81860266/',
-    external: true,
-  },
-  {
-    label: 'GitHub',
-    url: 'https://github.com/tomasleote',
-    external: true,
-  },
-  {
-    label: 'Spotify',
-    url: 'https://open.spotify.com/user/11123207778?si=95bcfbeef7aa4209',
-    external: true,
-  },
-]
+import { personal, contactLinks } from '../data/config'
 
 export default function Contact() {
   return (
@@ -27,21 +10,21 @@ export default function Contact() {
         <TextReveal tag="h1" className="contact-page__title">Contact</TextReveal>
 
         <TextReveal tag="p" className="contact-page__subtitle" delay={0.1}>
-          Want to work together or just say hi? Feel free to reach out.
+          Want to work together, have me build a website for you, or just say hi? Feel free to reach out.
         </TextReveal>
 
         <TextReveal className="contact-page__email-section" delay={0.2}>
           <a
-            href="mailto:tomas.leote@gmail.com"
+            href={`mailto:${personal.email}`}
             className="contact-page__email"
             data-cursor
           >
-            tomas.leote@gmail.com
+            {personal.email}
           </a>
         </TextReveal>
 
         <div className="contact-page__links">
-          {CONTACT_LINKS.map((link, i) => (
+          {contactLinks.map((link, i) => (
             <TextReveal key={link.label} delay={0.3 + i * 0.08}>
               <AnimatedLink
                 href={link.url}
