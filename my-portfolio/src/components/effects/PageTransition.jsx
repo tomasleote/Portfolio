@@ -1,6 +1,7 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 
 export default function PageTransition({ children }) {
   const location = useLocation()
@@ -8,43 +9,34 @@ export default function PageTransition({ children }) {
   const contentRef = useRef(null)
   const isFirstRender = useRef(true)
 
-  useEffect(() => {
-    // Skip animation on first render (preloader handles that)
+  useGSAP(() => {
+    // Skip animation on first render (preloader handles that); ensure content visible.
     if (isFirstRender.current) {
       isFirstRender.current = false
-      console.log('[PageTransition] First render — skipping transition, ensuring content visible')
-      // Explicitly set content visible on first load
       if (contentRef.current) {
         gsap.set(contentRef.current, { opacity: 1, y: 0 })
       }
       return
     }
 
-    console.log('[PageTransition] Navigating to:', location.pathname)
-
     const tl = gsap.timeline()
-
-    // 1. Overlay sweeps in from bottom
     tl.fromTo(overlayRef.current,
       { scaleY: 0, transformOrigin: 'bottom center' },
       { scaleY: 1, duration: 0.5, ease: 'power4.inOut' }
     )
-    // 2. Scroll to top
-    .add(() => window.scrollTo(0, 0))
-    // 3. Overlay sweeps out to top
-    .to(overlayRef.current, {
-      scaleY: 0,
-      transformOrigin: 'top center',
-      duration: 0.5,
-      ease: 'power4.inOut'
-    })
-    // 4. Content fades in
-    .fromTo(contentRef.current,
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
-      '-=0.3'
-    )
-  }, [location.pathname])
+      .add(() => window.scrollTo(0, 0))
+      .to(overlayRef.current, {
+        scaleY: 0,
+        transformOrigin: 'top center',
+        duration: 0.5,
+        ease: 'power4.inOut'
+      })
+      .fromTo(contentRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
+        '-=0.3'
+      )
+  }, { dependencies: [location.pathname] })
 
   return (
     <>
