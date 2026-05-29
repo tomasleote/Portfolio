@@ -1,19 +1,7 @@
 import TextReveal from '../components/effects/TextReveal'
 import '../styles/contact.css'
 import AnimatedLink from '../components/ui/AnimatedLink'
-
-const CONTACT_LINKS = [
-  {
-    label: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/tom%C3%A1s-leote-falc%C3%A3o-a81860266/',
-    external: true,
-  },
-  {
-    label: 'GitHub',
-    url: 'https://github.com/tomasleote',
-    external: true,
-  },
-]
+import { personal, contactLinks } from '../data/config'
 
 export default function Contact() {
   return (
@@ -27,16 +15,16 @@ export default function Contact() {
 
         <TextReveal className="contact-page__email-section" delay={0.2}>
           <a
-            href="mailto:tomas.leote@gmail.com"
+            href={`mailto:${personal.email}`}
             className="contact-page__email"
             data-cursor
           >
-            tomas.leote@gmail.com
+            {personal.email}
           </a>
         </TextReveal>
 
         <div className="contact-page__links">
-          {CONTACT_LINKS.map((link, i) => (
+          {contactLinks.map((link, i) => (
             <TextReveal key={link.label} delay={0.3 + i * 0.08}>
               <AnimatedLink
                 href={link.url}

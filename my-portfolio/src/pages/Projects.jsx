@@ -5,6 +5,7 @@ import { useMediaQuery } from '../hooks/useMediaQuery'
 import ProjectRow from '../components/ui/ProjectRow'
 import TextReveal from '../components/effects/TextReveal'
 import AnimatedLink from '../components/ui/AnimatedLink'
+import { social } from '../data/config'
 import ImageModal from '../components/ImageModal'
 import VideoModal from '../components/VideoModal'
 import '../styles/projects.css'
@@ -105,7 +106,7 @@ export default function Projects() {
 
         <TextReveal className="projects-page__footer" delay={0.3}>
           <AnimatedLink
-            href="https://github.com/tomasleote"
+            href={social.github}
             target="_blank"
             rel="noopener noreferrer"
             className="projects-page__github-link"
