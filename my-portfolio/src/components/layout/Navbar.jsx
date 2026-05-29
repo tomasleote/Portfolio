@@ -1,40 +1,29 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useTheme } from '../../context/ThemeContext'
+import { personal } from '../../data/config'
 import '../../styles/navbar.css'
 
 export default function Navbar({ onMenuToggle, isMenuOpen }) {
   const [scrolled, setScrolled] = useState(false)
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || 'dark'
-  })
+  const { theme, toggleTheme } = useTheme()
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
+    const handleScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme)
-    localStorage.setItem('theme', theme)
-  }, [theme])
-
-  const toggleTheme = () => {
-    setTheme(prev => prev === 'dark' ? 'light' : 'dark')
-  }
-
   return (
     <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <Link to="/" className="navbar__logo">
-        Tomás Leote Falcão
+        {personal.name}
       </Link>
-      
+
       <div className="navbar__actions">
-        <button 
-          className="navbar__theme-btn" 
-          onClick={toggleTheme} 
+        <button
+          className="navbar__theme-btn"
+          onClick={toggleTheme}
           aria-label="Toggle theme"
           data-cursor
         >

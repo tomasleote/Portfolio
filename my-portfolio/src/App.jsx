@@ -1,5 +1,6 @@
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
+import { useTheme } from './context/ThemeContext'
 import SmoothScroll from './components/layout/SmoothScroll'
 import Navbar from './components/layout/Navbar'
 import Menu from './components/layout/Menu'
@@ -18,33 +19,15 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [preloaderDone, setPreloaderDone] = useState(false)
   const location = useLocation()
+  const { theme } = useTheme()
 
-  // Lifted theme state
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || 'dark'
-  })
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme)
-    localStorage.setItem('theme', theme)
-  }, [theme])
-
-  const toggleTheme = () => {
-    setTheme(prev => prev === 'dark' ? 'light' : 'dark')
-  }
-
-  console.log(`[App] Render — path: "${location.pathname}", preloaderDone: ${preloaderDone}, theme: ${theme}`)
-
-  // Memoize the particle background, but recreate if theme changes
   const particleBackground = useMemo(() => {
-    console.log('[App] Creating particle background (memoized)')
     return <InteractiveParticlesBackground theme={theme} />
   }, [theme])
 
   return (
     <SmoothScroll>
-      {/* Background Layer: Kept mounted to prevent WebGL Context Loss, hidden when not on Home */}
-      <div 
+      <div
         style={{
           position: 'fixed',
           inset: 0,
@@ -58,15 +41,12 @@ function App() {
         {particleBackground}
       </div>
 
-      {/* All page content at zIndex:1 — renders above the particle canvas */}
       <div style={{ position: 'relative', zIndex: 1 }}>
         {!preloaderDone && <Preloader onComplete={() => setPreloaderDone(true)} />}
         <CustomCursor />
         <Navbar
           onMenuToggle={() => setIsMenuOpen((p) => !p)}
           isMenuOpen={isMenuOpen}
-          theme={theme}
-          toggleTheme={toggleTheme}
         />
         <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 
