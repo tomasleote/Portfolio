@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import AnimatedLink from '../components/ui/AnimatedLink'
+import Marquee from '../components/ui/Marquee'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import '../styles/home.css'
@@ -68,6 +69,9 @@ export default function Home({ preloaderDone }) {
             → Experience
           </AnimatedLink>
         </nav>
+      </div>
+      <div className="home__marquee">
+        <Marquee />
       </div>
     </main>
   )

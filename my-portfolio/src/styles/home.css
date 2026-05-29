@@ -68,3 +68,21 @@
     font-size: var(--fs-base);
   }
 }
+
+.home {
+  position: relative;
+  flex-direction: column;
+}
+
+.home__marquee {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--footer-height) + var(--space-md));
+}
+
+@media (max-width: 768px) {
+  .home__marquee {
+    bottom: calc(var(--footer-height) + var(--space-sm));
+  }
+}
