@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import SmoothScroll from './components/layout/SmoothScroll'
 import Navbar from './components/layout/Navbar'
@@ -19,13 +19,27 @@ function App() {
   const [preloaderDone, setPreloaderDone] = useState(false)
   const location = useLocation()
 
-  console.log(`[App] Render — path: "${location.pathname}", preloaderDone: ${preloaderDone}`)
+  // Lifted theme state
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('theme') || 'dark'
+  })
 
-  // Memoize the particle background so it never gets destroyed by parent re-renders
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark')
+  }
+
+  console.log(`[App] Render — path: "${location.pathname}", preloaderDone: ${preloaderDone}, theme: ${theme}`)
+
+  // Memoize the particle background, but recreate if theme changes
   const particleBackground = useMemo(() => {
     console.log('[App] Creating particle background (memoized)')
-    return <InteractiveParticlesBackground />
-  }, [])
+    return <InteractiveParticlesBackground theme={theme} />
+  }, [theme])
 
   return (
     <SmoothScroll>
@@ -51,6 +65,8 @@ function App() {
         <Navbar
           onMenuToggle={() => setIsMenuOpen((p) => !p)}
           isMenuOpen={isMenuOpen}
+          theme={theme}
+          toggleTheme={toggleTheme}
         />
         <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 

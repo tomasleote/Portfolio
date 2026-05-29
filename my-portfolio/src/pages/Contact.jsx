@@ -13,11 +13,6 @@ const CONTACT_LINKS = [
     url: 'https://github.com/tomasleote',
     external: true,
   },
-  {
-    label: 'Spotify',
-    url: 'https://open.spotify.com/user/11123207778?si=95bcfbeef7aa4209',
-    external: true,
-  },
 ]
 
 export default function Contact() {
@@ -27,7 +22,7 @@ export default function Contact() {
         <TextReveal tag="h1" className="contact-page__title">Contact</TextReveal>
 
         <TextReveal tag="p" className="contact-page__subtitle" delay={0.1}>
-          Want to work together or just say hi? Feel free to reach out.
+          Want to work together, have me build a website for you, or just say hi? Feel free to reach out.
         </TextReveal>
 
         <TextReveal className="contact-page__email-section" delay={0.2}>
