@@ -6,7 +6,7 @@ export const experiences = [
     location: "Lisbon, Portugal",
     companyUrl: "https://www.minsait.com/en",
     description: "Working as part of an agile team to develop and maintain applications for various clients, focusing on delivering high-quality software solutions. Engaging in code reviews, testing, and continuous integration to ensure robust and efficient code. Collaborating with cross-functional teams to gather requirements and implement features that meet client needs.",
-    technologies: ["Java", "JavaScript", "Responsive Design", "Full-Stack Development"]
+    technologies: ["Outsystems", "Agile", "Figma"]
   },
   {
     timeframe: "Sep 2025 — Jan 2026",
@@ -24,7 +24,7 @@ export const experiences = [
     location: "Lisbon, Portugal",
     companyUrl: "https://www.lusiadas.pt/hospitais-clinicas/hospital-lusiadas-lisboa",
     description: "Designed, implemented, and tested Front-End and Back-End solutions using Vue and .NET frameworks. Integrated RESTful APIs to connect front-end and back-end services, ensuring seamless data flow between different system components.",
-    technologies: ["Vue", ".NET", "RESTful APIs", "Agile"]
+    technologies: ["Vue", ".NET", "RESTful APIs", "Agile", "C#", "Full Stack Development"]
   },
   {
     timeframe: "Apr — Jun 2024",
@@ -33,7 +33,7 @@ export const experiences = [
     location: "Groningen, Netherlands",
     companyUrl: "https://www.klippa.com/en/home-en/",
     description: "Collaborated with senior engineers to build scalable analytics tools that supported strategic insights into platform usage for business clients. Implemented Angular, GraphQL, and Highcharts to deliver robust data visualizations.",
-    technologies: ["Angular", "GraphQL", "Highcharts", "TypeScript"]
+    technologies: ["Angular", "GraphQL", "Highcharts", "TypeScript", "Full Stack Development", "Go"]
   },
   {
     timeframe: "Sep 2021 — Sep 2024",
