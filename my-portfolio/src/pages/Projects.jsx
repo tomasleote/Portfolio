@@ -86,8 +86,7 @@ export default function Projects() {
               description={project.description}
               technologies={project.technologies}
               url={project.url}
-              documentUrl={project.documentUrl}
-              documentLabel={project.documentLabel}
+              links={project.links}
               isExpanded={hoveredIndex === index}
               onHover={() => setHoveredIndex(index)}
             />
