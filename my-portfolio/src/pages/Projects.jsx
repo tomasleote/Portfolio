@@ -13,7 +13,7 @@ import '../styles/projects.css'
 
 export default function Projects() {
   const [hoveredIndex, setHoveredIndex] = useState(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedProject, setSelectedProject] = useState(null)
   const imageRef = useRef(null)
   const isMobile = useMediaQuery('(max-width: 768px)')
 
@@ -31,7 +31,7 @@ export default function Projects() {
 
   const handleImageClick = () => {
     if (currentProject) {
-      setIsModalOpen(true)
+      setSelectedProject(currentProject)
     }
   }
 
@@ -107,19 +107,19 @@ export default function Projects() {
       </div>
 
       {/* Fullscreen Modals */}
-      {currentProject?.videoUrl ? (
-        <VideoModal 
-          videoUrl={currentProject.videoUrl} 
-          title={currentProject.title} 
-          isOpen={isModalOpen} 
-          onClose={() => setIsModalOpen(false)} 
+      {selectedProject?.videoUrl ? (
+        <VideoModal
+          videoUrl={selectedProject.videoUrl}
+          title={selectedProject.title}
+          isOpen={true}
+          onClose={() => setSelectedProject(null)}
         />
-      ) : currentProject?.imageUrl ? (
-        <ImageModal 
-          imageUrl={currentProject.imageUrl} 
-          title={currentProject.title} 
-          isOpen={isModalOpen} 
-          onClose={() => setIsModalOpen(false)} 
+      ) : selectedProject?.imageUrl ? (
+        <ImageModal
+          imageUrl={selectedProject.imageUrl}
+          title={selectedProject.title}
+          isOpen={true}
+          onClose={() => setSelectedProject(null)}
         />
       ) : null}
     </main>
