@@ -3,6 +3,21 @@
   * {
     cursor: none !important;
   }
+
+  /* While a fullscreen modal is open, restore the native cursor so users can
+     aim at the close button; the tiny custom dot is too hard to see over media. */
+  body:has(.modal-overlay) * {
+    cursor: auto !important;
+  }
+  body:has(.modal-overlay) a,
+  body:has(.modal-overlay) button,
+  body:has(.modal-overlay) [data-cursor] {
+    cursor: pointer !important;
+  }
+  body:has(.modal-overlay) .cursor-dot,
+  body:has(.modal-overlay) .cursor-follower {
+    opacity: 0 !important;
+  }
 }
 
 .cursor-dot {
