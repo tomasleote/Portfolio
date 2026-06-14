@@ -2,7 +2,7 @@
   display: flex;
   min-height: 100vh;
   padding-top: calc(var(--navbar-height) + var(--space-lg));
-  padding-bottom: calc(var(--footer-height) + var(--space-lg));
+  padding-bottom: calc(var(--footer-height) + var(--space-xl));
 }
 
 /* Left column: floating image */
@@ -79,7 +79,7 @@
 @media (max-width: 768px) {
   .projects-page {
     flex-direction: column;
-    padding: calc(var(--navbar-height) + var(--space-md)) var(--page-padding) calc(var(--footer-height) + var(--space-md));
+    padding: calc(var(--navbar-height) + var(--space-md)) var(--page-padding) calc(var(--footer-height) + var(--space-xl));
   }
   .projects-page__image-col {
     display: none;
