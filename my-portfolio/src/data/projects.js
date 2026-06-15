@@ -18,6 +18,7 @@ export const projects = [
     technologies: ["React", "Firebase", "Tailwind CSS", "Vercel", "Google Places API"],
     url: "https://findaday.cc",
     imageUrl: findADayPic,
+    links: [{ label: "Source Code", url: "https://github.com/tomasleote/findaday" }],
   },
   {
     title: "Avodah Creatives",
@@ -35,8 +36,7 @@ export const projects = [
     url: "https://www.klippa.com/en/home-en/",
     imageUrl: null, // uses video instead
     videoUrl: thesisDemoVid,
-    documentUrl: thesisPdf,
-    documentLabel: "Download Thesis PDF",
+    links: [{ label: "↓ Download Thesis PDF", url: thesisPdf }],
   },
   {
     title: "Budget Tracker",
@@ -45,6 +45,22 @@ export const projects = [
     technologies: ["React", "Node.js", "TypeScript", "PostgreSQL", "Tailwind CSS", "Express.js"],
     url: "https://github.com/tomasleote/budget_tracker",
     imageUrl: budgetTrackerPic,
+    links: [
+      { label: "Demo", url: "https://budgettrackerdemo.vercel.app/dashboard" },
+      { label: "Source Code", url: "https://github.com/tomasleote/budget_tracker" },
+    ],
+  },
+  {
+    title: "Op Shell",
+    category: "Systems",
+    description: "A custom shell implementation project demonstrating command-line interface development and system programming concepts. Built to explore shell functionality, command parsing, and process management in a Unix-like environment.",
+    technologies: ["C", "Unix", "System Programming", "Command Line"],
+    url: "https://github.com/tomasleote/op-shell",
+    imageUrl: null,
+    links: [
+      { label: "Demo", url: "https://op-shell.vercel.app/" },
+      { label: "Source Code", url: "https://github.com/tomasleote/op-shell" },
+    ],
   },
   {
     title: "Monte do Papa Léguas",
@@ -61,6 +77,7 @@ export const projects = [
     technologies: ["React", "Vite", "CSS3", "Responsive Design", "Animation"],
     url: "https://github.com/tomasleote/Portfolio",
     imageUrl: portfolioWebsite,
+    links: [{ label: "Source Code", url: "https://github.com/tomasleote/Portfolio" }],
   },
   {
     title: "Data Generator",
@@ -69,6 +86,7 @@ export const projects = [
     technologies: ["Java", "C#", "Swing", "Maven", "Mathematical Expressions"],
     url: "https://github.com/tomasleote/multiFormatDataGenerator",
     imageUrl: dataGenPic,
+    links: [{ label: "Source Code", url: "https://github.com/tomasleote/multiFormatDataGenerator" }],
   },
   {
     title: "Stock Market Simulator",
@@ -77,6 +95,7 @@ export const projects = [
     technologies: ["Java", "Networking", "PriorityBlockingQueue", "Message Queues"],
     url: "https://github.com/tomasleote/stockMarket_simulator",
     imageUrl: stockSimPic,
+    links: [{ label: "Source Code", url: "https://github.com/tomasleote/stockMarket_simulator" }],
   },
   {
     title: "Flight Logistics Simulator",
@@ -85,6 +104,7 @@ export const projects = [
     technologies: ["Java", "Simulation", "Algorithm Design", "Data Structures"],
     url: "https://github.com/tomasleote/flightLogisticsSimulator",
     imageUrl: flightLogisticsPic,
+    links: [{ label: "Source Code", url: "https://github.com/tomasleote/flightLogisticsSimulator" }],
   },
   {
     title: "LOTR Simulator",
@@ -93,13 +113,6 @@ export const projects = [
     technologies: ["Java", "OOP Design", "Game Development", "Simulation"],
     url: "https://github.com/tomasleote/lotrSimulator",
     imageUrl: lotrSimPic,
-  },
-  {
-    title: "Op Shell",
-    category: "Systems",
-    description: "A custom shell implementation project demonstrating command-line interface development and system programming concepts. Built to explore shell functionality, command parsing, and process management in a Unix-like environment.",
-    technologies: ["C", "Unix", "System Programming", "Command Line"],
-    url: "https://github.com/tomasleote/op-shell",
-    imageUrl: null,
+    links: [{ label: "Source Code", url: "https://github.com/tomasleote/lotrSimulator" }],
   },
 ]

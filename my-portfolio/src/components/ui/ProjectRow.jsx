@@ -9,8 +9,7 @@ export default function ProjectRow({
   description,
   technologies,
   url,
-  documentUrl,
-  documentLabel,
+  links,
   isExpanded,
   onHover,
   index,
@@ -33,9 +32,9 @@ export default function ProjectRow({
     if (url) window.open(url, '_blank', 'noopener,noreferrer')
   }
 
-  const handleDocClick = (e) => {
+  const handleLinkClick = (e, linkUrl) => {
     e.stopPropagation()
-    window.open(documentUrl, '_blank', 'noopener,noreferrer')
+    window.open(linkUrl, '_blank', 'noopener,noreferrer')
   }
 
   return (
@@ -55,14 +54,19 @@ export default function ProjectRow({
       <div ref={detailsRef} className="project-row__details">
         <p className="project-row__description">{description}</p>
 
-        {documentUrl && (
-          <button
-            className="project-row__doc-btn"
-            onClick={handleDocClick}
-            data-cursor
-          >
-            ↓ {documentLabel || "Download PDF"}
-          </button>
+        {links?.length > 0 && (
+          <div className="project-row__links">
+            {links.map((link, i) => (
+              <button
+                key={i}
+                className="project-row__doc-btn"
+                onClick={(e) => handleLinkClick(e, link.url)}
+                data-cursor
+              >
+                {link.label}
+              </button>
+            ))}
+          </div>
         )}
 
         <div className="project-row__tags">
