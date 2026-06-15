@@ -45,7 +45,10 @@ export const projects = [
     technologies: ["React", "Node.js", "TypeScript", "PostgreSQL", "Tailwind CSS", "Express.js"],
     url: "https://github.com/tomasleote/budget_tracker",
     imageUrl: budgetTrackerPic,
-    links: [{ label: "Source Code", url: "https://github.com/tomasleote/budget_tracker" }],
+    links: [
+      { label: "Demo", url: "https://budgettrackerdemo.vercel.app/dashboard" },
+      { label: "Source Code", url: "https://github.com/tomasleote/budget_tracker" },
+    ],
   },
   {
     title: "Op Shell",
