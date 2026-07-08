@@ -1,0 +1,81 @@
+- generic [ref=e3]:
+  - link "Saltar para o conteúdo principal" [ref=e4] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e5]:
+    - generic:
+      - link "Monte da Estrada":
+        - /url: /
+        - img "Monte da Estrada"
+    - navigation "Main navigation" [ref=e7]:
+      - menubar [ref=e8]:
+        - menuitem "Casa" [ref=e9] [cursor=pointer]
+        - menuitem "Quartos" [ref=e10] [cursor=pointer]
+        - menuitem "Descobrir" [ref=e11] [cursor=pointer]
+        - menuitem "Galeria" [ref=e12] [cursor=pointer]
+        - menuitem "Contacto" [ref=e13] [cursor=pointer]
+    - generic [ref=e14]:
+      - button "Reservar" [ref=e15] [cursor=pointer]
+      - button "Selecionar propriedade" [ref=e17] [cursor=pointer]:
+        - text: PROPRIEDADES
+        - generic [ref=e18]: ▾
+    - generic [ref=e19]: Mobile menu is closed
+  - main [ref=e20]:
+    - generic [ref=e22]:
+      - status "Loading" [ref=e23]
+      - paragraph [ref=e25]: A carregar...
+  - contentinfo [ref=e26]:
+    - generic [ref=e27]:
+      - navigation "Footer navigation" [ref=e28]:
+        - list [ref=e29]:
+          - listitem [ref=e30]:
+            - link "Casa" [ref=e31] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e32]:
+            - link "Quartos" [ref=e33] [cursor=pointer]:
+              - /url: /quartos
+          - listitem [ref=e34]:
+            - link "Descobrir" [ref=e35] [cursor=pointer]:
+              - /url: /descobrir
+          - listitem [ref=e36]:
+            - link "Galeria" [ref=e37] [cursor=pointer]:
+              - /url: /galeria
+          - listitem [ref=e38]:
+            - link "Contacto" [ref=e39] [cursor=pointer]:
+              - /url: /contacto
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - generic [ref=e42]: Morada
+          - paragraph [ref=e43]:
+            - generic [ref=e44]: Monte da Estrada
+            - generic [ref=e45]: Malhadil – Zambujeira do Mar
+            - generic [ref=e46]: 7630-611
+            - text: Alentejo, Portugal
+            - link "37.58841557051901, -8.778295719162255" [ref=e47] [cursor=pointer]:
+              - /url: https://maps.app.goo.gl/iXs8og3TukTh4k397
+          - generic [ref=e48]: Contactos
+          - paragraph [ref=e49]:
+            - link "+351 960 254 072" [ref=e50] [cursor=pointer]:
+              - /url: tel:+351960254072
+          - paragraph [ref=e51]:
+            - link "geral@montedaestrada.com" [ref=e52] [cursor=pointer]:
+              - /url: mailto:geral@montedaestrada.com
+        - generic [ref=e53]:
+          - paragraph [ref=e54]:
+            - link "Livro de Reclamações Eletrónico" [ref=e55] [cursor=pointer]:
+              - /url: https://www.livroreclamacoes.pt/
+          - generic [ref=e56]: "Entidade de Resolução Alternativa de Litígios de Consumo:"
+          - paragraph [ref=e57]:
+            - link "CNIACC – Centro Nacional de Informação e Arbitragem de Conflitos de Consumo" [ref=e58] [cursor=pointer]:
+              - /url: https://www.cniacc.pt/
+          - paragraph [ref=e59]:
+            - link "253 619 107" [ref=e60] [cursor=pointer]:
+              - /url: tel:253619107
+            - text: "|"
+            - link "geral@cniacc.pt" [ref=e61] [cursor=pointer]:
+              - /url: mailto:geral@cniacc.pt
+    - paragraph [ref=e63]: © Monte da Estrada 2026
+  - generic:
+    - button "Abrir formulário de reserva": Reservar
+  - generic [ref=e64]:
+    - button "Switch to English" [ref=e65] [cursor=pointer]: EN
+    - button "Mudar para Português" [ref=e66]: PT

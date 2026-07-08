@@ -9,6 +9,7 @@ import flightLogisticsPic from '../assets/FlightLogisticsSimulation.png'
 import lotrSimPic from '../assets/lotrSimulator.png'
 import budgetTrackerPic from '../assets/budgetTracker.png'
 import findADayPic from '../assets/findADay.png'
+import monteDaEstradaPic from '../assets/monteDaEstrada.png'
 
 export const projects = [
   {
@@ -27,6 +28,14 @@ export const projects = [
     technologies: ["React", "Tailwind CSS", "Responsive Design", "Modern UI/UX"],
     url: "https://avodahcreatives.com/",
     imageUrl: avodahWebsite,
+  },
+  {
+    title: "Monte da Estrada",
+    category: "Website",
+    description: "A modern, multilingual website built for Monte da Estrada, a rural guest house (turismo rural) in the Alentejo region of Portugal. Developed with React and Vite, the site features full Portuguese/English localization, an interactive MapLibre map for directions, smooth motion-driven page transitions, and an integrated booking flow — all wrapped in a clean, responsive design that reflects the property's countryside character.",
+    technologies: ["React", "Vite", "Tailwind CSS", "MapLibre GL", "Framer Motion", "i18n (PT/EN)"],
+    url: "https://www.montedaestrada.com/",
+    imageUrl: monteDaEstradaPic,
   },
   {
     title: "Thesis: Analytics Dashboard",
