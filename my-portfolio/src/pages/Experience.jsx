@@ -57,6 +57,7 @@ export default function Experience() {
               key={index}
               title={cert.title}
               pdfUrl={cert.pdfUrl}
+              thumb={cert.thumb}
             />
           ))}
         </div>

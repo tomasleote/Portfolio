@@ -23,9 +23,10 @@
 }
 
 .certificate-preview {
-    width: calc(100% + 40px);
-    height: calc(100% + 40px);
-    margin: -20px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
     border: none;
     pointer-events: none;
     background-color: var(--color-white);
