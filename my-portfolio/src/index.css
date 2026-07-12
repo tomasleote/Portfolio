@@ -67,14 +67,16 @@
 
 html {
   width: 100%;
-  height: 100%;
+  /* No fixed height: Lenis watches <html> via ResizeObserver to learn the
+     scrollable height; height:100% pins the box to the viewport so content
+     growth never fires it, freezing lenis.limit (wheel scroll walls). */
   background-color: var(--color-bg);
   transition: background-color var(--dur-normal) ease;
 }
 
 body {
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
   font-family: var(--font-body);
   font-size: var(--fs-base);
   line-height: 1.6;
