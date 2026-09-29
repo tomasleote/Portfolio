@@ -68,6 +68,9 @@ export default function Home({ preloaderDone }) {
           <AnimatedLink to="/experience" ref={(el) => (linksRef.current[2] = el)} className="home__link">
             → Experience
           </AnimatedLink>
+          <AnimatedLink to="/certifications" ref={(el) => (linksRef.current[3] = el)} className="home__link">
+            → Certifications
+          </AnimatedLink>
         </nav>
       </div>
       <div className="home__marquee">

@@ -27,7 +27,7 @@
   font-size: var(--fs-lg);
   color: var(--color-accent);
   font-weight: 400;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
   min-height: 1.8em;
   animation: homeFallbackFadeIn 0.8s ease-out 0.2s both;
 }
