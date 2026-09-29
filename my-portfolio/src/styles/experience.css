@@ -39,23 +39,3 @@
 .experience-page__resume-anchor:hover {
   color: var(--color-accent);
 }
-
-.experience-page__section-title {
-  font-size: var(--fs-xl);
-  font-weight: 700;
-  color: var(--color-white);
-  letter-spacing: -0.02em;
-  margin-bottom: var(--space-lg);
-}
-
-.experience-page__certs-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-md);
-}
-
-@media (max-width: 768px) {
-  .experience-page__certs-grid {
-    grid-template-columns: 1fr;
-  }
-}

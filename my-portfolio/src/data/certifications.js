@@ -1,3 +1,5 @@
+import bachelorCert from '../assets/certifications/bachelor.pdf'
+import booleanCert from '../assets/certifications/Certificate_boolean_Attendance.pdf'
 import agenticAICert from '../assets/certifications/AgenticAI.pdf'
 import o11Cert from '../assets/certifications/O11AssociateDeveloper.pdf'
 import odcCert from '../assets/certifications/ODC.pdf'
@@ -11,6 +13,8 @@ import timeMasteryCert from '../assets/certifications/timeMastery.pdf'
 import ethicsCert from '../assets/certifications/ethicsintheworkspace.pdf'
 import chatgptCert from '../assets/certifications/chatgptforwork.pdf'
 
+import bachelorThumb from '../assets/certifications/thumbs/bachelor.png'
+import booleanThumb from '../assets/certifications/thumbs/Certificate_boolean_Attendance.png'
 import agenticAIThumb from '../assets/certifications/thumbs/AgenticAI.png'
 import o11Thumb from '../assets/certifications/thumbs/O11AssociateDeveloper.png'
 import odcThumb from '../assets/certifications/thumbs/ODC.png'
@@ -23,8 +27,11 @@ import criticalThinkingThumb from '../assets/certifications/thumbs/criticalthink
 import timeMasteryThumb from '../assets/certifications/thumbs/timeMastery.png'
 import ethicsThumb from '../assets/certifications/thumbs/ethicsintheworkspace.png'
 import chatgptThumb from '../assets/certifications/thumbs/chatgptforwork.png'
+import aiForDevsThumb from '../assets/certifications/ai_for_devs.png'
 
 export const certifications = [
+  { title: "BSc Computing Science — University of Groningen", pdfUrl: bachelorCert, thumb: bachelorThumb },
+  { title: "Practical Introduction to Artificial Intelligence | Developers", verifyUrl: "https://certificate.codeforall.com/verify/f0fb12d515965?s", thumb: aiForDevsThumb },
   { title: "Outsystems Agentic AI Specialization", pdfUrl: agenticAICert, thumb: agenticAIThumb },
   { title: "Outsystems O11 Associate Developer", pdfUrl: o11Cert, thumb: o11Thumb },
   { title: "Outsystems ODC Associate Developer", pdfUrl: odcCert, thumb: odcThumb },
@@ -36,5 +43,6 @@ export const certifications = [
   { title: "Critical Thinking Strategies For Better Decisions", pdfUrl: criticalThinkingCert, thumb: criticalThinkingThumb },
   { title: "Time Management Mastery: Do More, Stress Less", pdfUrl: timeMasteryCert, thumb: timeMasteryThumb },
   { title: "Ethics and Professionalism in the Workplace", pdfUrl: ethicsCert, thumb: ethicsThumb },
-  { title: "ChatGPT for Work: The Definitive Guide to Innovate with AI", pdfUrl: chatgptCert, thumb: chatgptThumb }
+  { title: "ChatGPT for Work: The Definitive Guide to Innovate with AI", pdfUrl: chatgptCert, thumb: chatgptThumb },
+  { title: "Coding Week: Arcade Collection — Boolean", pdfUrl: booleanCert, thumb: booleanThumb }
 ]

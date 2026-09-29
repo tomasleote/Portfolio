@@ -2,10 +2,14 @@ import '../styles/CertificateCard.css'
 import { useState } from 'react'
 import PdfModal from './PdfModal'
 
-function CertificateCard({ title, pdfUrl, thumb }) {
+function CertificateCard({ title, pdfUrl, verifyUrl, thumb }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleCardClick = () => {
+        if (verifyUrl) {
+            window.open(verifyUrl, '_blank', 'noopener,noreferrer');
+            return;
+        }
         setIsModalOpen(true);
     };
 
@@ -24,7 +28,7 @@ function CertificateCard({ title, pdfUrl, thumb }) {
                         loading="lazy"
                     />
                     <div className="certificate-overlay">
-                        <span className="expand-icon">⤢</span>
+                        <span className="expand-icon">{verifyUrl ? '↗' : '⤢'}</span>
                     </div>
                 </div>
 
@@ -33,12 +37,14 @@ function CertificateCard({ title, pdfUrl, thumb }) {
                 </div>
             </div>
 
-            <PdfModal
-                pdfUrl={pdfUrl}
-                title={title}
-                isOpen={isModalOpen}
-                onClose={closeModal}
-            />
+            {pdfUrl && (
+                <PdfModal
+                    pdfUrl={pdfUrl}
+                    title={title}
+                    isOpen={isModalOpen}
+                    onClose={closeModal}
+                />
+            )}
         </>
     )
 }

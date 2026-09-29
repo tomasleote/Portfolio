@@ -1,11 +1,9 @@
 import TextReveal from '../components/effects/TextReveal'
 import ExperienceCard from '../components/ui/ExperienceCard'
-import CertificateCard from '../components/CertificateCard'
 import Magnet from '../components/effects/Magnet'
 import AnimatedLink from '../components/ui/AnimatedLink'
 import { experiences } from '../data/experiences'
 import { cvUrl } from '../data/config'
-import { certifications } from '../data/certifications'
 import '../styles/experience.css'
 
 export default function Experience() {
@@ -45,22 +43,6 @@ export default function Experience() {
             </AnimatedLink>
           </Magnet>
         </TextReveal>
-
-        {/* ── Certifications Section ── */}
-        <TextReveal tag="h2" className="experience-page__section-title" delay={0.1}>
-          Certifications
-        </TextReveal>
-
-        <div className="experience-page__certs-grid">
-          {certifications.map((cert, index) => (
-            <CertificateCard
-              key={index}
-              title={cert.title}
-              pdfUrl={cert.pdfUrl}
-              thumb={cert.thumb}
-            />
-          ))}
-        </div>
 
       </div>
     </main>

@@ -13,6 +13,14 @@ import monteDaEstradaPic from '../assets/monteDaEstrada.png'
 
 export const projects = [
   {
+    title: "FestivalDb",
+    category: "Full Stack",
+    description: "Currently in active development. FestivalDb is an app I'm building purely because I'm obsessed with concerts and music festivals. It tracks my live music history end to end: every concert I've attended, which artists I've seen, how many times I've caught them live, my favorite sets, and dates, all neatly organized. The UI is still rough around the edges and being polished, but it gives a solid glimpse into the core data engine behind it.",
+    technologies: ["Next.js", "TypeScript", "FastAPI", "Python", "PostgreSQL", "SQLAlchemy"],
+    url: "https://festival-db-six.vercel.app/login",
+    imageUrl: null,
+  },
+  {
     title: "FindADay",
     category: "Web App",
     description: "FindADay was born out of the frustration of trying to coordinate a group trip where no one could agree on a date. I couldn't find a tool that made it easy, so I built one. FindADay is a scheduling tool with no accounts required. Whether you're planning a dinner or a vacation, just create a link, collect availability, and let the integrated heatmap show you exactly when everyone is free.",
