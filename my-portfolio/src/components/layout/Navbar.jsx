@@ -6,7 +6,7 @@ import '../../styles/navbar.css'
 
 export default function Navbar({ onMenuToggle, isMenuOpen }) {
   const [scrolled, setScrolled] = useState(false)
-  const { theme, toggleTheme } = useTheme()
+  const { theme, toggleTheme, canToggleTheme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -21,7 +21,7 @@ export default function Navbar({ onMenuToggle, isMenuOpen }) {
       </Link>
 
       <div className="navbar__actions">
-        <button
+        {canToggleTheme && <button
           className="navbar__theme-btn"
           onClick={toggleTheme}
           aria-label="Toggle theme"
@@ -44,7 +44,7 @@ export default function Navbar({ onMenuToggle, isMenuOpen }) {
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
           )}
-        </button>
+        </button>}
 
         <button
           className={`navbar__menu-btn ${isMenuOpen ? 'navbar__menu-btn--open' : ''}`}

@@ -4,12 +4,16 @@
   background-color: var(--color-bg);
   z-index: 99;
   display: flex;
-  align-items: center;
   justify-content: center;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: calc(var(--navbar-height) + var(--space-md)) 0 var(--space-xl);
   clip-path: inset(0 0 100% 0);
 }
 
+/* margin:auto instead of align-items:center so overflowing content stays reachable at the top */
 .menu-overlay__list {
+  margin: auto 0;
   list-style: none;
   display: flex;
   flex-direction: column;

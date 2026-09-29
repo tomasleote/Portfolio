@@ -40,7 +40,7 @@ export default function Menu({ isOpen, onClose }) {
   }, { dependencies: [isOpen], scope: overlayRef })
 
   return (
-    <nav ref={overlayRef} className="menu-overlay" aria-hidden={!isOpen}>
+    <nav ref={overlayRef} className="menu-overlay" aria-hidden={!isOpen} data-lenis-prevent>
       <ul className="menu-overlay__list">
         {NAV_ITEMS.map((item, i) => (
           <li key={item.path} className="menu-overlay__item">
